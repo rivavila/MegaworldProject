@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Sidebar</title>
+    <link
+      rel="stylesheet"
+      href="/my-react-app/src/Megaworld/css/homepage.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/my-react-app/src/Megaworld/css/slideshow.css"
+    />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>Sidebar</h2>
+        <nav>
+          <ul>
+            <li><a href="/my-react-app/src/Megaworld/webpages/home.html">Home</a></li>
+            <li><a href="/my-react-app/src/Megaworld/webpages/projects.html">Projects</a></li>
+            <li><a href="/my-react-app/src/Megaworld/webpages/townships.html">Townships</a></li>
+            <li><a href="/my-react-app/src/Megaworld/webpages/news.html">News</a></li>
+            <li><a href="/my-react-app/src/Megaworld/webpages/about.html">About</a></li>
+            <li><a href="/my-react-app/src/Megaworld/webpages/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="header">
+        <div class="search-bar">
+          <form id="searchForm">
+            <input
+              id="searchInput"
+              type="text"
+              name="search"
+              placeholder="Search..."
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
+        <!-- Add user and notification icons here -->
+        <a href="#" class="user-icon" style="padding-top: 5px">
+          <!-- User icon -->
+          <i class="fa fa-user" style="font-size: 24px"></i>
+        </a>
+        <a href="#" class="notification-icon" style="padding-top: 5px">
+          <!-- Notification icon -->
+          <i class="fa fa-bell" style="font-size: 24px"></i>
+        </a>
+      </div>
+
+      <main class="main-content">
+        <header>
+          <h1>Tools</h1>
+        </header>
+
+        <section class="slideshow-container">
+          <div class="mySlides fade">
+            <img
+              src="https://www.megaworldcorp.com/investors/investors/sites/investors/files/2018-07/Our-Company-mobile.jpg"
+              alt="Slide 1"
+            />
+          </div>
+
+          <div class="mySlides fade">
+            <img
+              src="https://www.megaworldcorp.com/investors/investors/sites/investors/files/2018-07/Our-Company-mobile.jpg"
+              alt="Slide 2"
+            />
+          </div>
+
+          <div class="mySlides fade">
+            <img
+              src="https://www.megaworldcorp.com/investors/investors/sites/investors/files/2018-07/Our-Company-mobile.jpg"
+              alt="Slide 3"
+            />
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </section>
+
+        <!-- User Information section -->
+        <section class="user-info">
+          <h2>User Information</h2>
+          <div>
+            <p>Name: John Doe</p>
+            <p>Email: john@example.com</p>
+            <!-- Add more user information as needed -->
+          </div>
+        </section>
+
+        <!-- Latest News section -->
+        <section class="latest-news">
+          <h2>Latest News</h2>
+          <div class="news-item">
+            <h3>News Title 1</h3>
+            <p>Description of news item 1.</p>
+          </div>
+          <div class="news-item">
+            <h3>News Title 2</h3>
+            <p>Description of news item 2.</p>
+          </div>
+          <!-- Add more news items as needed -->
+        </section>
+      </main>
+      <footer>
+        <p>&copy; 2024 Megaworld Properties. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+      }
+    </script>
+
+    <script>
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevents the default form submission behavior
+          var searchTerm = document.getElementById("searchInput").value;
+          // Simulating search result (replace this with your actual search logic)
+          if (searchTerm.trim() === "") {
+            alert("Please enter a search term.");
+          } else {
+            // Simulating no content found scenario
+            if (searchTerm.toLowerCase() === "example") {
+              alert("No content found for: " + searchTerm);
+            } else {
+              alert("Search term: " + searchTerm);
+            }
+          }
+        });
+
+      // JavaScript for image zoom effect
+      const images = document.querySelectorAll(".mySlides img");
+      images.forEach((img) => {
+        img.addEventListener("mouseenter", () => {
+          img.style.transform = "scale(1.1)";
+        });
+        img.addEventListener("mouseleave", () => {
+          img.style.transform = "scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>

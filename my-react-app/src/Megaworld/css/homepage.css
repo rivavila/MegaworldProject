@@ -1,0 +1,165 @@
+/* Your existing CSS styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.content-container {
+  display: flex;
+}
+
+.user-info {
+  width: 30%; /* Adjust the width as needed */
+  background-color: #f2f2f2; /* Example background color */
+  padding: 20px; /* Example padding */
+  border: 1px solid #ccc; /* Example border */
+  margin-left: 20px; /* Add margin to separate from slideshow */
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.user-icon {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.notification-icon {
+  margin-right: 10px;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #08365a;
+  padding: 20px;
+  color: #fff;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 230px;
+}
+
+.main-content section h2,
+.main-content section p {
+  color: #333;
+}
+
+.search-bar {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  width: 300px;
+  border: 1px solid;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.slideshow-container img {
+  width: 100%;
+  height: auto;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.user-info {
+  float: right;
+  width: 30%; /* Adjust the width as needed */
+  margin-right: 10px; /* Add margin to separate from main content */
+  background-color: #f2f2f2; /* Example background color */
+  padding: 20px; /* Example padding */
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
