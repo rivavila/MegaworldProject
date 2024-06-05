@@ -13,6 +13,8 @@ function Project() {
                     <button className="btn btn-primary btn-no-radius">PRESELLING</button>
                 </div>
 
+                <h5>Showing 8 out of ## projects</h5>
+
                 <nav aria-label="Page navigation">
                     <ul className="pagination justify-content-center">
                         <li className="page-item disabled">
@@ -31,7 +33,7 @@ function Project() {
                         </li>
                     </ul>
                 </nav>
-
+                
             </div>
 
             <div className="container-fluid my-5">
@@ -39,12 +41,10 @@ function Project() {
                     <div className="col-md-3">
                         <img src={pic} alt="Sample" className="img-fluid" />
                         <div className="container my-3">
-                            <h5>Northwin Global City</h5>
+                            <h5><a href="/" className="text-decoration-none">Northwin Global City</a></h5>
                             <p>
-                                Northwin Global City, Marilao/Bocaue, Bulacan
-                            </p>
-                            <p>
-                                Located just 20 kilometers north of Metro Manila along North Luzon Expressway (NLEX), Northwin Globa
+                                <strong>Northwin Global City, Marilao/Bocaue, Bulacan</strong>
+                                <br />Located just 20 kilometers north of Metro Manila along North Luzon Expressway (NLEX), Northwin Global
                             </p>
                         </div>
                     </div>
