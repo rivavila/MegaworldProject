@@ -1,13 +1,73 @@
-body {
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: hidden;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Content {
+  flex: 1;
+  padding-top: 0px; /* Adjust based on the height of Navbar */
+  padding-bottom: 40px; /* Adjust based on the height of Footer */
+}
+
+.Navbar {
+  position: static;
+  top: 0;
+  width: 100%;
+
+}
+
+.Footer {
+  position: static;
+  bottom: 0;
+  width: 100%;
+
+}
+
+.full-width-slider {
+  width: calc(100vw - 20px); /* Adjust the value to accommodate your navbar's width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slick-slide img {
+    width: 100%; /* Make the images fill the container width */
+    height: 40vh; /* Maintain the aspect ratio */
+}
+
+.custom-breadcrumb {
+  background-color: #13385d;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Style breadcrumb items */
+.custom-breadcrumb .breadcrumb-item {
+  color: white; /* Text color */
+}
+
+/* Style breadcrumb links */
+.custom-breadcrumb .breadcrumb-item a {
+  color: white; /* Link color */
+}
+
+/* Style breadcrumb divider */
+.custom-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: white; /* Divider color */
+}
+
+/* Optional: Hover styles for links */
+.custom-breadcrumb .breadcrumb-item a:hover {
+  text-decoration: underline;
 }
