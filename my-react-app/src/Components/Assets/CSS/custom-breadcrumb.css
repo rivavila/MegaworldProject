@@ -1,0 +1,24 @@
+/* custom-breadcrumb.css */
+
+.breadcrumb-container {
+    background-color: #13385d;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.breadcrumb {
+    margin: 0; /* Remove default margin */
+}
+
+.breadcrumb-item a.breadcrumb-link {
+    color: white; /* Link color */
+}
+
+.breadcrumb-item.active {
+    color: white; /* Active item color */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: white; /* Divider color */
+    content: '/'; /* Change the divider to '/' */
+}
