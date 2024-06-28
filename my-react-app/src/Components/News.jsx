@@ -21,18 +21,18 @@ function Header() {
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Projects</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/">Projects</a></li>
                     <li>
-                        <a href="#">Townships</a>
+                        <a href="/">Townships</a>
                         <ul className="dropdown">
-                            <li><a href="#">Township 1</a></li>
-                            <li><a href="#">Township 2</a></li>
+                            <li><a href="/">Township 1</a></li>
+                            <li><a href="/">Township 2</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="/">News</a></li>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/">Contact</a></li>
                 </ul>
             </nav>
             <div className="logo">
@@ -64,21 +64,21 @@ function Footer() {
             <div className="footer-section quick-links">
                 <h3>QUICK LINKS</h3>
                 <ul>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Townships</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/">Contact</a></li>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/">News</a></li>
+                    <li><a href="/">Townships</a></li>
+                    <li><a href="/">Projects</a></li>
+                    <li><a href="/">Home</a></li>
                 </ul>
             </div>
             <div className="footer-section information">
                 <h3>INFORMATION</h3>
                 <ul>
-                    <li><a href="#">News and Updates</a></li>
-                    <li><a href="#">Videos</a></li>
-                    <li><a href="#">Awards</a></li>
-                    <li><a href="#">About Megaworld</a></li>
+                    <li><a href="/">News and Updates</a></li>
+                    <li><a href="/">Videos</a></li>
+                    <li><a href="/">Awards</a></li>
+                    <li><a href="/">About Megaworld</a></li>
                 </ul>
             </div>
             <div className="footer-section newsletter">
@@ -89,9 +89,9 @@ function Footer() {
                     <button type="submit">Join</button>
                 </form>
                 <div className="social-icons">
-                    <a href="#"><i className="fab fa-twitter"></i></a>
-                    <a href="#"><i className="fab fa-facebook-f"></i></a>
-                    <a href="#"><i className="fab fa-pinterest-p"></i></a>
+                    <a href="/"><i className="fab fa-twitter"></i></a>
+                    <a href="/"><i className="fab fa-facebook-f"></i></a>
+                    <a href="/"><i className="fab fa-pinterest-p"></i></a>
                 </div>
             </div>
         </footer>
