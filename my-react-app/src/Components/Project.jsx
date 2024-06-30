@@ -1,5 +1,5 @@
 import React from "react";
-import pic from "./Assets/Img/sampleImage.jpg";
+import pic from "./assets/img/sampleImage.jpg";
 
 import ProjectCard from "./widgets/ProjectCard";
 

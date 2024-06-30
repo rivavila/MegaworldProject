@@ -1,4 +1,4 @@
-import Banner from './Assets/Img/banner.png';
+import Banner from './assets/img/banner.png';
 import React from 'react';
 
 function Navbar() {
@@ -68,7 +68,7 @@ function Navbar() {
                             <a className="nav-link text-white" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="/Project">Projects</a>
+                            <a className="nav-link text-white" href="/projects">Projects</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link text-white" href="/">Townships</a>
