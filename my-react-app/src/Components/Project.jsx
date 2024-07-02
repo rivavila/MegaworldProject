@@ -1,19 +1,15 @@
 import React from "react";
-import pic from "./assets/img/sampleImage.jpg";
-
 import ProjectCard from "./widgets/ProjectCard";
-
+import states from "./assets/projects.json";
 
 function Project() {
-    const projects = [
-        {
-            image: pic,
-            title: "Northwin Global City",
-            description: "Northwin Global City, Marilao/Bocaue, Bulacan",
-            link: "/projects/1"
-        },
-        // Add more projects here...
-    ];
+    const projects = states.map((state) => ({
+        image: state.projectData.projectCover,
+        title: state.projectData.projectTitle,
+        address: state.projectData.projectAddress,
+        description: state.projectData.projectDescription.join(" "), // Join description array into a single string
+        link: `/projects/${state.projectNo}`
+    }));
 
     return (
         <div className="Project">
@@ -24,7 +20,7 @@ function Project() {
                     <button className="btn btn-primary mr-2 btn-no-radius">RFO</button>
                     <button className="btn btn-primary btn-no-radius">PRESELLING</button>
                 </div>
-                <h5>Showing 8 out of ## projects</h5>
+                <h5>Showing {projects.length} out of ## projects</h5>
                 <nav aria-label="Page navigation">
                     <ul className="pagination justify-content-center">
                         <li className="page-item disabled">
@@ -48,22 +44,9 @@ function Project() {
                     {projects.map((project, index) => (
                         <ProjectCard
                             key={index}
-                            image={project.image}
+                            image={require(`./assets/img/${project.image}`)}
                             title={project.title}
-                            description={project.description}
-                            link={project.link}
-                        />
-                    ))}
-                </div>
-            </div>
-
-            <div className="container-fluid my-5">
-                <div className="row">
-                    {projects.map((project, index) => (
-                        <ProjectCard
-                            key={index}
-                            image={project.image}
-                            title={project.title}
+                            address={project.address}
                             description={project.description}
                             link={project.link}
                         />
