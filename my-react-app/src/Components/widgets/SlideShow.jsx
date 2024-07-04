@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../Assets/CSS/SlideShow'; // Optional: Add CSS for styling
+import '../assets/CSS/SlideShow'; // Optional: Add CSS for styling
 
 const images = [
     'path/to/image1.jpg',

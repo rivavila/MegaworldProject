@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Assets/CSS/custom-breadcrumb.css';
+import '../assets/CSS/custom-breadcrumb.css';
 
 const BreadCrumb = ({ projectTitle }) => {
     return (
