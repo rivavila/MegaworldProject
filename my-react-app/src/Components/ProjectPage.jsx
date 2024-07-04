@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import BreadCrumb from './widgets/BreadCrumb';
 import ProjectContent from './widgets/ProjectContent';
 import ProjectInquire from './widgets/ProjectInquire';
-import states from './assets/projects.json';
+import states from './Assets/projects.json';
 
 function ProjectPage() {
     const { projectNo } = useParams();
