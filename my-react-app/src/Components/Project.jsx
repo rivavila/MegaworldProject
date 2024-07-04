@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectCard from "./widgets/ProjectCard";
-import states from "./assets/projects.json";
+import states from "./Assets/projects.json";
 
 function Project() {
     const projects = states.map((state) => ({

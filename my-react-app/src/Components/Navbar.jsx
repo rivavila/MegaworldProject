@@ -1,4 +1,4 @@
-import Banner from './assets/img/banner.png';
+import Banner from './Assets/Img/banner.png';
 import React from 'react';
 
 function Navbar() {
