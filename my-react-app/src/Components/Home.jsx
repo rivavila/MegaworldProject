@@ -1,21 +1,17 @@
 import React from "react";
-import "./Assets/CSS/home.css";
+import ParkMckinleyWestHome from "./assets/img/ParkMckinleyWestHome.jpg";
+import "./assets/CSS/home.css";
 
 const PropertySearch = () => {
   return (
     <div>
-      <div className="header-image">
+      <div className="contact-container">
         <img
-          src="/my-react-app/src/Components/Assets/Img/ParkMckinleyWestHome.jpg"
-          alt="Park McKinley West"
-          className="image"
+          src={ParkMckinleyWestHome}
+          alt="ParkMckinleyWestHome"
+          style={{ width: "auto", height: "400px" }}
         />
-        <div className="overlay">
-          <h1>Park McKinley West</h1>
-          <p>2 Bedroom Units Available</p>
-          <p>Tower C</p>
-          <button className="inquire-button">Inquire Now!</button>
-        </div>
+        
       </div>
       <div className="search-container">
         <h2>What Are You Looking For?</h2>

@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';
-import Project from './Components/Project';
-import ProjectPage from './Components/ProjectPage';
-import Contact from './Components/Contact';
-// import Settings from './Components/Settings';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Project from './components/Project';
+import ProjectPage from './components/ProjectPage';
+import News from './components/News';
+import About from './components/About';
+import Contact from './components/Contact';
 import './App.css'; // Import the CSS file
 
 function App() {
@@ -18,10 +20,12 @@ function App() {
 
         <div className="Content">
           <Routes>
+            <Route path="/home" element={<Home />} />
             <Route path="/projects" element={<Project />} />
             <Route path="/projects/:projectNo" element={<ProjectPage />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            {/* <Route path="/settings/:id" element={<Settings />} /> */}
           </Routes>
         </div>
 
