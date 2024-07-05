@@ -1,13 +1,14 @@
+import ParkMckinleyWestHome from "./assets/img/ParkMckinleyWestHome.jpg";
 import React from "react";
-import "./assets/css/contact.css";
+import "./assets/CSS/contact.css";
 
 const Contact = () => {
   return (
     <div className="contact-container">
       <img
-        src="path_to_your_image"
-        alt="Megaworld Banner"
-        className="contact-banner"
+        src={ParkMckinleyWestHome}
+        alt="ParkMckinleyWestHome"
+        style={{ width: "1000px", height: "450px" }}
       />
       <div className="contact-content">
         <div className="contact-form">

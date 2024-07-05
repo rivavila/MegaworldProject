@@ -1,0 +1,24 @@
+body,
+p,
+h1,
+div {
+  font-family: "Libre Caslon Text", serif;
+}
+
+@media screen and (max-width: 800px) {
+  .content {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.txtTitle {
+  font-weight: 700;
+  font-size: 29px;
+  color: #08365a;
+  margin-top: 50px;
+}
+
+p {
+  font-size: 20px;
+}
