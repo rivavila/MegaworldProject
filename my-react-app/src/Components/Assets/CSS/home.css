@@ -1,53 +1,217 @@
-.header-image {
-  position: relative;
-  text-align: center;
+.text-banners {
+  width: 100%;
+  float: left;
+  padding: 10px;
 }
 
-.image {
+.text-banners #back-text {
+  font-size: 32px;
+  float: left;
+  width: 100%;
+  opacity: 0.2;
+}
+
+.text-banners #front-text {
+  font-size: 18px;
+  width: 100%;
+  float: left;
+  font-weight: 700;
+  position: relative;
+  top: -20px;
+  color: rgb(8, 54, 90);
+}
+
+input[type="email"] {
+  font-family: "Century Gothic", CenturyGothic;
+  width: 100%;
+  font-size: 12px;
+  padding: 10px;
+  font-weight: 700;
+  border: 0;
+}
+
+button {
+  background-color: rgb(47, 144, 255);
+  width: 100%;
+  border: 0;
+  color: white;
+  font-size: 12px;
+  padding: 10px;
+}
+
+p {
+  font-size: 13px;
+}
+
+.img-wrapper {
+  max-height: 323px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  transition: transform 0.2s;
+  margin: 0 auto;
+}
+
+.card-img-top:hover {
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.search-box {
+  background-color: whitesmoke;
+  float: left;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px #888;
+  height: 100px;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.search-box #city-box {
+  float: left;
+  width: 30%;
+  height: 100%;
+  padding: 20px;
+}
+
+.search-box #price-box {
+  float: left;
+  width: 25%;
+  height: 100%;
+  padding: 20px;
+}
+
+.search-box #unit-box {
+  float: left;
+  width: 20%;
+  height: 100%;
+  padding: 20px;
+}
+
+.search-box #button-box {
+  float: left;
+  width: 25%;
+  height: 100%;
+  padding: 35px;
+}
+
+#search-btn1:hover {
+  background-color: rgb(13, 96, 192);
+  transition: 0.5s;
+}
+
+.search-box #button-box button {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(47, 144, 255);
+  border: none;
+  color: white;
+}
+
+.search-box #button-box .fas {
+  margin-right: 10px;
+}
+
+.dropbtn {
+  border: 1px solid gainsboro;
+  background-color: #fff;
+  color: gray;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 100%;
   height: auto;
 }
 
-.overlay {
+.dropbtn .fas {
+  padding-right: 10px;
+}
+
+.dropbtn:hover {
+  border: 1px solid rgb(193, 193, 255);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropdown-content {
+  display: none;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #f1f1f1;
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-.inquire-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.search-container {
-  text-align: center;
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+.search-result {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-top: 20px;
+  float: left;
 }
 
-.search-form {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+.search-result .result {
+  width: 100%;
+  height: 200px;
+  max-height: 200px;
+  float: left;
+  margin: 5px;
+  overflow: hidden;
 }
 
-.search-field {
-  margin: 0 10px;
+.search-result .result .image {
+  float: left;
+  height: auto;
+  width: 30%;
+}
+
+.search-result .result .details {
+  float: left;
+  height: auto;
+  width: 70%;
   padding: 10px;
-  font-size: 16px;
 }
 
-.search-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
+.search-result .result:hover {
+  cursor: hand;
+  background-color: whitesmoke;
+}
+
+@media screen and (max-width: 800px) {
+  .search-box #city-box,
+  .search-box #price-box,
+  .search-box #unit-box,
+  .search-box #button-box {
+    width: 100%;
+    height: 80px;
+  }
+
+  .search-box {
+    height: auto;
+  }
 }
