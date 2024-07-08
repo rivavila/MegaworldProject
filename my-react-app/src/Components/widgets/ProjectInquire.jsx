@@ -1,14 +1,20 @@
 import React from 'react';
 
 function ProjectInquire({ project }) {
+    const { projectTitle } = project.projectData;
+    const { projectPricing, projectAmenities, projectWhatAround } = project.projectInquire;
+    const projectImage = require(`../assets/img/${project.projectData.projectCover}`);
+    const contactImage = require(`../assets/img/contact-us.jpg`);
+
     return (
         <div>
             <hr />
             <div className='my-1'>
-                <h4 className='fs-5'>Pricing Available Upon Inquiry</h4>
+                <h4 className='fs-5'>{projectPricing}</h4>
                 <p className='my-5'>
-                    Price estimate of {project.projectData.projectTitle} as of June 17, 2024.
+                    Price estimate of {projectTitle} as of June 17, 2024.
                 </p>
+
             </div>
 
             <hr />
@@ -17,7 +23,7 @@ function ProjectInquire({ project }) {
                 <div className='my-1'>
                     <h4 className='fs-5'>Inquire Now</h4>
                     <p className='my-5'>
-                        Interested with {project.projectData.projectTitle}? Send us an inquiry now so we can find the best unit for you.
+                        Interested with {projectTitle}? Send us an inquiry now so we can find the best unit for you.
                     </p>
                 </div>
 
@@ -96,6 +102,40 @@ function ProjectInquire({ project }) {
                 </div>
                 <hr />
             </form>
+
+            <img src={projectImage} alt={projectTitle} style={{ height: '25vh', width: '41vh' }} className='mb-3' />
+
+            {projectAmenities && projectAmenities.length > 0 && (
+                <div className='my-1 mb-3'>
+                    <h4 className='fs-5'>Project Amenities</h4>
+                    <ul>
+                        {projectAmenities.map((amenity, index) => (
+                            <li key={index}>{amenity}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+            {projectWhatAround && projectWhatAround.length > 0 && (
+                <div className='my-1 mb-3'>
+                    <h4 className='fs-5'>What's Around?</h4>
+                    <ul>
+                        {projectWhatAround.map((amenity, index) => (
+                            <li key={index}>{amenity}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+
+            <div className="mb-3">
+                <h4 className='fs-5'>Interested?</h4>
+                <p className='my-1'>
+                    Click the button to inquire.
+                </p>
+                <img src={contactImage} alt={projectTitle} style={{ height: '21vh', width: '41vh' }} />
+            </div>
+
         </div>
     );
 }

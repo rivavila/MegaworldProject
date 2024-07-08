@@ -5,48 +5,44 @@ import 'slick-carousel/slick/slick-theme.css';
 import '../assets/css/slide-show.css';
 
 function ProjectContent({ project }) {
-    const [mainImage, setMainImage] = useState('');
-    const sliderRef = useRef(null);
+    const [mainImages, setMainImages] = useState([]);
+    const sliderRefs = useRef([]);
 
     useEffect(() => {
-        if (project.projectData.projectDevelopmentImg.length > 0) {
-            setMainImage(project.projectData.projectDevelopmentImg[0]);
+        if (project.projectData.projectSlides.length > 0) {
+            const initialImages = project.projectData.projectSlides.map(slide => slide.projectImg[0]);
+            setMainImages(initialImages);
         }
     }, [project]);
 
     const settings = {
-        initialSlide: 1, // Start with the first image centered
+        initialSlide: 0,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplaySpeed: 6000,
-        beforeChange: (current, next) => {
-            // Accessing the slider images and setting main image when slider changes
-            const sliderImages = project.projectData.projectDevelopmentImg;
-            setMainImage(sliderImages[next]);
-        }
     };
 
-    const handleSlideClick = (img) => {
-        setMainImage(img);
-        // Find the index of clicked image in the slider images and move slider to that index
-        const index = project.projectData.projectDevelopmentImg.indexOf(img);
-        if (sliderRef.current) {
-            sliderRef.current.slickGoTo(index);
+    const handleSlideClick = (img, slideIndex) => {
+        const newMainImages = [...mainImages];
+        newMainImages[slideIndex] = img;
+        setMainImages(newMainImages);
+
+        const index = project.projectData.projectSlides[slideIndex].projectImg.indexOf(img);
+        if (sliderRefs.current[slideIndex]) {
+            sliderRefs.current[slideIndex].slickGoTo(index);
         }
     };
 
     return (
         <div>
-            {/* Render project title if included */}
             {project.projectStructure.includes('projectTitle') && (
                 <div className='my-3'>
                     <h4>{project.projectData.projectTitle}</h4>
                 </div>
             )}
 
-            {/* Render project description if included */}
             {project.projectStructure.includes('projectDescription') && (
                 <div className='my-3'>
                     {project.projectData.projectDescription.map((desc, index) => (
@@ -55,7 +51,24 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {/* Render project feature if included */}
+            {project.projectStructure.includes('projectVideo') && (
+                <div className='my-5'>
+                    <h4>{project.projectData.projectTitle} Video</h4>
+                    <div className='text-center'>
+                        <iframe
+                            width="100%"
+                            height="500"
+                            src={`https://www.youtube.com/embed/${project.projectData.projectVideo}`}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                </div>
+            )}
+
+
             {project.projectStructure.includes('projectFeature') && (
                 <div className='my-5'>
                     <h4>Feature</h4>
@@ -67,7 +80,6 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {/* Render project establishment if included */}
             {project.projectStructure.includes('projectEstablisment') && (
                 <div className='my-5'>
                     <h4>Establishment</h4>
@@ -79,7 +91,6 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {/* Render project unique features if included */}
             {project.projectStructure.includes('projectUniqueFeatured') && (
                 <div className='my-5'>
                     <h4>Unique Features</h4>
@@ -89,7 +100,6 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {/* Render project address if included */}
             {project.projectStructure.includes('projectAddress') && (
                 <div className='my-5'>
                     <h4>Address</h4>
@@ -97,7 +107,6 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {/* Render project location map if included */}
             {project.projectStructure.includes('projectLocation') && (
                 <div className='my-5'>
                     <h4>Location</h4>
@@ -116,35 +125,27 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {/* Render project development images title if included */}
-            {project.projectStructure.includes('projectDevelopmentImg') && (
-                <div className='my-5'>
-                    <h4>{project.projectData.projectSlideTitle}</h4>
-                </div>
-            )}
-
-            {/* Render main image */}
-            {project.projectStructure.includes('projectDevelopmentImg') && mainImage && (
-                <div className='text-center'> {/* Centering the main image */}
-                    <img src={require(`../assets/img/${mainImage}`)} alt="Main" className="img-fluid" style={{ height: '38vh', width: '55vh' }} />
-                </div>
-            )}
-
-            {/* Render slider with development images if included */}
-            {project.projectStructure.includes('projectDevelopmentImg') && (
-                <div className='text-center'>
-                    <div className="my-2" style={{ width: '70%', margin: '0 auto' }}>
-                        <Slider {...settings} ref={sliderRef}>
-                            {project.projectData.projectDevelopmentImg.map((img, index) => (
-                                <div key={index} onClick={() => handleSlideClick(img)}>
-                                    <img src={require(`../assets/img/${img}`)} alt={`Slide ${index + 1}`} className="img-fluid" style={{ height: '150px' }} />
-                                </div>
-                            ))}
-                        </Slider>
+            {project.projectStructure.includes('projectSlides') && project.projectData.projectSlides.map((slide, slideIndex) => (
+                <div key={slideIndex} className='my-5'>
+                    <h4>{slide.projectSlideTitle}</h4>
+                    {mainImages[slideIndex] && (
+                        <div className='text-center'>
+                            <img src={require(`../assets/img/${mainImages[slideIndex]}`)} alt="Main" className="img-fluid" style={{ height: '38vh', width: '55vh' }} />
+                        </div>
+                    )}
+                    <div className='text-center'>
+                        <div className="my-2" style={{ width: '70%', margin: '0 auto' }}>
+                            <Slider {...settings} ref={el => (sliderRefs.current[slideIndex] = el)}>
+                                {slide.projectImg.map((img, index) => (
+                                    <div key={index} onClick={() => handleSlideClick(img, slideIndex)}>
+                                        <img src={require(`../assets/img/${img}`)} alt={`Slide ${index + 1}`} className="img-fluid" style={{ height: '150px' }} />
+                                    </div>
+                                ))}
+                            </Slider>
+                        </div>
                     </div>
                 </div>
-            )}
-
+            ))}
         </div>
     );
 }
