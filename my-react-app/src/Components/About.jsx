@@ -1,7 +1,7 @@
 import React from "react";
 // import TikTok from "react-tiktok";
 import Slider from "react-slick";
-import YouTube from "react-youtube"; // Import YouTube component
+
 import MegaworldPictureAbout from "./assets/img/MegaworldPictureAbout.jpg";
 import award1 from "./assets/img/awards/award1.jpg";
 import award2 from "./assets/img/awards/award2.jpg";
@@ -36,7 +36,7 @@ import award30 from "./assets/img/awards/award30.jpg";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./assets/CSS/about.css";
+import "./assets/css/about.css";
 
 const About = () => {
   const settings = {
@@ -110,8 +110,8 @@ const About = () => {
         </p>
         {/* Embed YouTube Video */}
         <div className="video-container">
-          <YouTube
-            videoId={
+
+
               <iframe
                 width="560"
                 height="315"
@@ -122,8 +122,8 @@ const About = () => {
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
               ></iframe>
-            }
-          />
+
+        
         </div>
         <a id="about-megaworld">
           <h1 className="txtTitle">About Megaworld</h1>
