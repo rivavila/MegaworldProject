@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+
 import ParkMckinleyWestHome from "./assets/img/ParkMckinleyWestHome.jpg";
-import "./assets/CSS/home.css";
-import "./assets/CSS/pagination.css";
+import "./assets/css/home.css";
+import "./assets/css/pagination.css";
 
 const itemsPerPage = 5; // Number of items to show per page
 
