@@ -1,15 +1,15 @@
 import ParkMckinleyWestHome from "./assets/img/ParkMckinleyWestHome.jpg";
-import React from "react";
+import React, { useState } from "react";
 import "./assets/CSS/Contact.css";
 
 const Contact = () => {
+  const [role, setRole] = useState("");
+
   return (
     <div className="contact-container">
-      <img
-        src={ParkMckinleyWestHome}
-        alt="ParkMckinleyWestHome"
-        style={{ width: "1000px", height: "450px" }}
-      />
+      <div className="contact-image">
+        <img src={ParkMckinleyWestHome} alt="ParkMckinleyWestHome" />
+      </div>
       <div className="contact-content">
         <div className="contact-form">
           <h2>Contact Us</h2>
@@ -33,10 +33,22 @@ const Contact = () => {
               required
             ></textarea>
 
-            <div className="radio-group">
+            <div className="btn-group btn-group-toggle">
               <label>Are you a broker or an inquirer?</label>
-              <input type="radio" name="role" value="broker" /> Broker
-              <input type="radio" name="role" value="inquirer" /> Inquirer
+              <button
+                type="button"
+                className={`role-button ${role === "broker" ? "active" : ""}`}
+                onClick={() => setRole("broker")}
+              >
+                Broker
+              </button>
+              <button
+                type="button"
+                className={`role-button ${role === "inquirer" ? "active" : ""}`}
+                onClick={() => setRole("inquirer")}
+              >
+                Inquirer
+              </button>
             </div>
 
             <div className="preferred-viewing-schedule">
@@ -57,10 +69,7 @@ const Contact = () => {
               Number
             </div>
 
-            <div className="recaptcha">
-              <input type="checkbox" name="recaptcha" required /> I'm not a
-              robot
-            </div>
+            {/* make a captcha here */}
 
             <button type="submit">Send Inquiry</button>
           </form>
@@ -68,8 +77,13 @@ const Contact = () => {
         <div className="contact-info">
           <h3>About Megaworld</h3>
           <p>
-            Megaworld Corporation was founded by Business Tycoon Andrew Tan...
-            (add the remaining text here).
+            Megaworld Corporation was founded by Andrew Tan and incorporated
+            under Philippine law on August 24, 1989 to engage in the
+            development, leasing and marketing of real estate. The Company
+            initially established a reputation for building high-end residential
+            condominiums and commercial properties located in convenient urban
+            locations with easy access to offices as well as leisure and
+            entertainment amenities in Metro Manila.
           </p>
         </div>
       </div>
