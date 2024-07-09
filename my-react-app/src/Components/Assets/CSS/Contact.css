@@ -1,66 +1,111 @@
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* padding: 20px; */
+body {
+  font-size: 13px;
+  font-family: "Libre Caslon Text", serif;
 }
 
-.contact-banner {
+.contact-container {
   width: 100%;
-  height: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-image {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 20px; */
+}
+
+.contact-image img {
+  width: 800px;
+  height: 250px;
 }
 
 .contact-content {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  margin-top: 20px;
 }
 
 .contact-form {
-  width: 60%;
-  padding: 20px;
+  flex: 2;
+  margin-right: 20px;
 }
 
 .contact-info {
-  width: 35%;
+  flex: 1;
+  /* background-color: #f9f9f9; */
   padding: 20px;
+  border-radius: 5px;
 }
 
-.contact-form h2 {
-  font-size: 24px;
+.contact-form h2,
+.contact-info h3 {
+  font-size: 1.5em;
   margin-bottom: 10px;
 }
 
-.contact-form p {
-  font-size: 16px;
+.contact-form p,
+.contact-info p {
   margin-bottom: 20px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form form input[type="text"],
+.contact-form form input[type="email"],
+.contact-form form textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.radio-group,
+.button-group {
+  margin-bottom: 15px;
+}
+
+.button-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.role-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.role-button.active {
+  background-color: #0056b3;
+}
+
+.role-button:hover {
+  background-color: #0056b3;
+}
+
 .preferred-viewing-schedule,
 .inquiry-feedback,
 .recaptcha {
   margin-bottom: 15px;
 }
 
-button {
+.preferred-viewing-schedule label,
+.inquiry-feedback label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.contact-form form button {
   padding: 10px 20px;
-  background-color: green;
-  color: white;
   border: none;
+  background-color: #007bff;
+  color: #fff;
   border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: darkgreen;
+.contact-form form button:hover {
+  background-color: #0056b3;
 }

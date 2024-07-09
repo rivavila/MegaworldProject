@@ -1,101 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import "./assets/CSS/news.css";
+import "./assets/CSS/home.css";
 
+// NewsItem component to display individual news
+const NewsItem = ({ title, date, content }) => (
+  <div className="news-item">
+    <h2>{title}</h2>
+    <p>
+      <em>{date}</em>
+    </p>
+    <p>{content}</p>
+  </div>
+);
 
-function App() {
-    return (
-        <div>
-            <Header />
-            <Main />
-            <Footer />
-        </div>
-    );
-}
+// News component to fetch and display news items
+const News = () => {
+  const [news, setNews] = useState([]);
 
-function Header() {
-    return (
-        <header>
-            <div className="contact-info">
-                <p>
-                    <i className="fas fa-phone"></i> +63 9178403037 <i className="fas fa-envelope"></i> sales@megaworldproperties.com
-                </p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/">Projects</a></li>
-                    <li>
-                        <a href="/">Townships</a>
-                        <ul className="dropdown">
-                            <li><a href="/">Township 1</a></li>
-                            <li><a href="/">Township 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/">News</a></li>
-                    <li><a href="/">About</a></li>
-                    <li><a href="/">Contact</a></li>
-                </ul>
-            </nav>
-            <div className="logo">
-                <h1>www.MEGAWORLDPROPERTIES.com</h1>
-            </div>
-        </header>
-    );
-}
+  useEffect(() => {
+    // Placeholder for fetching news data from an API
+    // Example:
+    // fetch('https://api.example.com/news')
+    //   .then(response => response.json())
+    //   .then(data => setNews(data));
+  }, []);
 
-function Main() {
-    return (
-        <main>
-            <section className="news-updates">
-                <h2>NEWS AND UPDATES</h2>
-                <p>Latest news from us</p>
-            </section>
-        </main>
-    );
-}
+  return (
+    <div className="text-banners">
+      <div id="back-text">
+        <center>Latest News from Us</center>
+      </div>
+      <h1 id="front-text">
+        <center>NEWS AND UPDATES</center>
+      </h1>
+      {news.length > 0 &&
+        news.map((item, index) => (
+          <NewsItem
+            key={index}
+            title={item.title}
+            date={item.date}
+            content={item.content}
+          />
+        ))}
+    </div>
+  );
+};
 
-function Footer() {
-    return (
-        <footer>
-            <div className="footer-section contact-us">
-                <h3>CONTACT US</h3>
-                <p><i className="fas fa-phone"></i> +63 9178403037</p>
-                <p><i className="fas fa-envelope"></i> sales@megaworldproperties.com</p>
-            </div>
-            <div className="footer-section quick-links">
-                <h3>QUICK LINKS</h3>
-                <ul>
-                    <li><a href="/">Contact</a></li>
-                    <li><a href="/">About</a></li>
-                    <li><a href="/">News</a></li>
-                    <li><a href="/">Townships</a></li>
-                    <li><a href="/">Projects</a></li>
-                    <li><a href="/">Home</a></li>
-                </ul>
-            </div>
-            <div className="footer-section information">
-                <h3>INFORMATION</h3>
-                <ul>
-                    <li><a href="/">News and Updates</a></li>
-                    <li><a href="/">Videos</a></li>
-                    <li><a href="/">Awards</a></li>
-                    <li><a href="/">About Megaworld</a></li>
-                </ul>
-            </div>
-            <div className="footer-section newsletter">
-                <h3>NEWSLETTER</h3>
-                <p>To be updated on our news and promotions, join our mailing list.</p>
-                <form>
-                    <input type="email" placeholder="Email Address" />
-                    <button type="submit">Join</button>
-                </form>
-                <div className="social-icons">
-                    <a href="/"><i className="fab fa-twitter"></i></a>
-                    <a href="/"><i className="fab fa-facebook-f"></i></a>
-                    <a href="/"><i className="fab fa-pinterest-p"></i></a>
-                </div>
-            </div>
-        </footer>
-    );
-}
-
-export default App;
+export default News;
