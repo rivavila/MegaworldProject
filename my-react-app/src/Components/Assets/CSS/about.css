@@ -5,6 +5,11 @@ div {
   font-family: "Libre Caslon Text", serif;
 }
 
+.slick-slide img {
+  width: 70%; /* Ensures images take full width of their container */
+  height: 10%; /* Allows images to scale proportionally */
+}
+
 @media screen and (max-width: 800px) {
   .content {
     width: 100%;

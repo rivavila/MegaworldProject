@@ -96,8 +96,6 @@ const Project = () => {
                 </div>
             </div>
 
-
-
             <div className="container-fluid my-5">
                 <div className="row">
                     {currentProjects.map((project, index) => (
