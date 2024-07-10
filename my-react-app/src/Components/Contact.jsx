@@ -1,6 +1,6 @@
 import ParkMckinleyWestHome from "./assets/img/ParkMckinleyWestHome.jpg";
 import React, { useState } from "react";
-import "./assets/CSS/Contact.css";
+import "./assets/css/Contact.css";
 
 const Contact = () => {
   const [role, setRole] = useState("");

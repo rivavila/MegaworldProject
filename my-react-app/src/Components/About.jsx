@@ -33,7 +33,6 @@ import award27 from "./assets/img/awards/award27.jpg";
 import award28 from "./assets/img/awards/award28.jpg";
 import award29 from "./assets/img/awards/award29.jpg";
 import award30 from "./assets/img/awards/award30.jpg";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./assets/css/about.css";
@@ -108,23 +107,23 @@ const About = () => {
           Cyberpark became the first IT park in the Philippines to be designated
           a PEZA special economic zone.
         </p>
+
+
         {/* Embed YouTube Video */}
         <div className="video-container">
-
-
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/pQT0lxDPfBU?si=7G9gqKtrbHY6ly9x"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-
-        
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/pQT0lxDPfBU?si=7G9gqKtrbHY6ly9x"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
+
+
         <a id="about-megaworld">
           <h1 className="txtTitle">About Megaworld</h1>
         </a>
@@ -167,6 +166,8 @@ const About = () => {
           ))}
         </Slider>
       </div>
+
+      
     </div>
   );
 };

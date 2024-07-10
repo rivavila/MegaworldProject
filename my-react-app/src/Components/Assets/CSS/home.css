@@ -215,3 +215,8 @@ p {
     height: auto;
   }
 }
+
+.slick-slide img {
+  width: 70%; /* Ensures images take full width of their container */
+  height: 10%; /* Allows images to scale proportionally */
+}
