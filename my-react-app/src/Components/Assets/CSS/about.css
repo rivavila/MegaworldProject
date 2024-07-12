@@ -10,6 +10,18 @@ div {
   height: 10%; /* Allows images to scale proportionally */
 }
 
+.center-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.center-image img {
+  max-width: 100%;
+  height: auto;
+}
+
 @media screen and (max-width: 800px) {
   .content {
     width: 100%;
