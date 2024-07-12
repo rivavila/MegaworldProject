@@ -1,7 +1,6 @@
 import React from "react";
 // import TikTok from "react-tiktok";
 import Slider from "react-slick";
-
 import MegaworldPictureAbout from "./assets/img/MegaworldPictureAbout.jpg";
 import award1 from "./assets/img/awards/award1.jpg";
 import award2 from "./assets/img/awards/award2.jpg";
@@ -87,7 +86,9 @@ const About = () => {
   return (
     <div className="content">
       <div className="about-container">
-        <img src={MegaworldPictureAbout} alt="MegaworldPictureAbout" />
+        <div className="center-image">
+          <img src={MegaworldPictureAbout} alt="MegaworldPictureAbout" />
+        </div>
         <p className="txtTitle">History</p>
         <p>
           The Company was founded by Andrew Tan and incorporated under
@@ -108,7 +109,6 @@ const About = () => {
           a PEZA special economic zone.
         </p>
 
-
         {/* Embed YouTube Video */}
         <div className="video-container">
           <iframe
@@ -122,7 +122,6 @@ const About = () => {
             allowfullscreen
           ></iframe>
         </div>
-
 
         <a id="about-megaworld">
           <h1 className="txtTitle">About Megaworld</h1>
@@ -166,8 +165,6 @@ const About = () => {
           ))}
         </Slider>
       </div>
-
-      
     </div>
   );
 };
