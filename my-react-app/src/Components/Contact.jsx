@@ -55,34 +55,59 @@ const Contact = () => {
   };
 
   const validateEmail = (email) => {
-    // Basic email validation regex
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate email before proceeding
     if (!validateEmail(form.email)) {
       alert("Please enter a valid email address.");
       return;
     }
 
-    // Prepare the email body
-    const emailBody = `
-      Full Name: ${form.fullName}
-      Contact Number: ${form.contactNumber}
-      Email: ${form.email}
-      Company: ${form.company}
-      Message: ${form.message}
-      Preferred Viewing Schedule: ${form.schedule}
-      Role: ${form.role}
-      Feedback: ${form.feedback.join(", ")}
-    `;
+    const formData = new FormData();
+    formData.append("fullName", form.fullName);
+    formData.append("contactNumber", form.contactNumber);
+    formData.append("email", form.email);
+    formData.append("company", form.company);
+    formData.append("message", form.message);
+    formData.append("schedule", form.schedule);
+    formData.append("role", form.role);
+    formData.append("feedback", form.feedback.join(", "));
 
-    // Example alert or submit logic
-    alert("Form submitted successfully!");
-    // Or you can submit the form data to a server here
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/avilariv26@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form.");
+      }
+
+      alert("Form submitted successfully!");
+      setForm({
+        fullName: "",
+        contactNumber: "",
+        email: "",
+        company: "",
+        message: "",
+        schedule: "",
+        weekdays: false,
+        feedback: [],
+        role: "",
+      });
+    } catch (error) {
+      console.error("Failed to submit form:", error);
+      alert("Failed to submit form. Please try again later.");
+    }
   };
 
   return (
