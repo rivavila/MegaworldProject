@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./assets/CSS/news.css";
-import "./assets/CSS/home.css";
+import "./assets/css/news.css";
+import "./assets/css/home.css";
 
 // NewsItem component to display individual news
 const NewsItem = ({ title, date, content }) => (
