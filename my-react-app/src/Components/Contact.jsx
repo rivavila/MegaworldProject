@@ -78,7 +78,7 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        "https://formsubmit.co/avilariv26@gmail.com",
+        "https://formsubmit.co/bitcreateitsolutions@gmail.com",
         {
           method: "POST",
           headers: {
