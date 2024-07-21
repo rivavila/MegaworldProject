@@ -7,10 +7,11 @@ import "./assets/css/pagination.css"; // Import pagination styles
 
 const itemsPerPage = 8; // Number of items to show per page
 
-const Project = () => {
+const Townships = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
-    const projects = states.map((state) => ({
+    // Filter the projects to include only those with type "Townships"
+    const townshipProjects = states.filter(state => state.type === "Townships").map((state) => ({
         image: state.projectData.projectCover,
         title: state.projectData.projectTitle,
         address: state.projectData.projectAddress,
@@ -18,7 +19,7 @@ const Project = () => {
         link: `/projects/${state.projectNo}`
     }));
 
-    const totalPages = Math.ceil(projects.length / itemsPerPage);
+    const totalPages = Math.ceil(townshipProjects.length / itemsPerPage);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -26,53 +27,26 @@ const Project = () => {
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentProjects = projects.slice(startIndex, endIndex);
+    const currentProjects = townshipProjects.slice(startIndex, endIndex);
 
     return (
-        <div className="Project">
+        <div className="Township">
             <div className="text-banners">
                 <div id="back-text">
-                    <center>OUR OFFERS ARE GREAT</center>
+                    <center>EXPLORE, STAY OR WORK</center>
                 </div>
                 <h1 id="front-text">
-                    <center>POPULAR PROJECTS</center>
+                    <center>EXPERIENCE THE FINEST TOWNSHIPS</center>
                 </h1>
             </div>
 
-            <div style={{ textAlign: "center" }}>
-                <div>
-                    <div
-                        className="btn-group"
-                        style={{ margin: "20px", backgroundColor: "white" }}
-                        role="group"
-                        aria-label="RFO or Pre-selling"
-                    >
-                        <button
-                            type="button"
-                            className="btn btn-secondary on-hover-btn"
-                            onClick={() => ""}
-                            style={{ backgroundColor: "rgb(8, 54, 90)", borderRadius: "0px" }}
-                        >
-                            All
-                        </button>
-                        <button
-                            type="button"
-                            className="btn btn-secondary on-hover-btn"
-                            onClick={() => ""}
-                            style={{ backgroundColor: "rgb(8, 54, 90)", borderRadius: "0px" }}
-                        >
-                            RFO
-                        </button>
-                        <button
-                            type="button"
-                            className="btn btn-secondary on-hover-btn"
-                            onClick={() => ""}
-                            style={{ backgroundColor: "rgb(8, 54, 90)", borderRadius: "0px" }}
-                        >
-                            PRESELLING
-                        </button>
-                    </div>
+            <div className="text-banners">
+
+                <div style={{fontSize: "24px"}}>
+                    <center>Choose from these 17 Townships of Megaworld!</center>
                 </div>
+
+
             </div>
 
             {/* Pagination controls */}
@@ -112,16 +86,6 @@ const Project = () => {
                 </div>
             </div>
 
-            {/* New Button */}
-            <button className="fixed-bottom-right-button">
-                <a className="nav-link text-white" href="/create-project" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                    </svg>
-                </a>
-            </button>
-
-
             {/* Pagination controls */}
             <div style={{ textAlign: "center" }}>
                 <div className="pagination">
@@ -147,4 +111,4 @@ const Project = () => {
     );
 }
 
-export default Project;
+export default Townships;

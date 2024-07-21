@@ -1,9 +1,114 @@
-import ParkMckinleyWestHome from "./assets/img/ParkMckinleyWestHome.jpg";
 import React, { useState } from "react";
+import ParkMckinleyWestHome from "./assets/img/ParkMckinleyWestHome.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/Contact.css";
 
 const Contact = () => {
-  const [role, setRole] = useState("");
+  const [form, setForm] = useState({
+    fullName: "",
+    contactNumber: "",
+    email: "",
+    company: "",
+    message: "",
+    schedule: "",
+    weekdays: false,
+    feedback: [],
+    role: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    if (type === "checkbox") {
+      setForm((prevForm) => ({
+        ...prevForm,
+        [name]: checked,
+      }));
+    } else {
+      setForm((prevForm) => ({
+        ...prevForm,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleFeedbackChange = (e) => {
+    const { value, checked } = e.target;
+    setForm((prevForm) => {
+      const feedback = checked
+        ? [...prevForm.feedback, value]
+        : prevForm.feedback.filter((item) => item !== value);
+      return {
+        ...prevForm,
+        feedback,
+      };
+    });
+  };
+
+  const handleRoleChange = (role) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      role: role,
+    }));
+  };
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateEmail(form.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("fullName", form.fullName);
+    formData.append("contactNumber", form.contactNumber);
+    formData.append("email", form.email);
+    formData.append("company", form.company);
+    formData.append("message", form.message);
+    formData.append("schedule", form.schedule);
+    formData.append("role", form.role);
+    formData.append("feedback", form.feedback.join(", "));
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/bitcreateitsolutions@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form.");
+      }
+
+      alert("Form submitted successfully!");
+      setForm({
+        fullName: "",
+        contactNumber: "",
+        email: "",
+        company: "",
+        message: "",
+        schedule: "",
+        weekdays: false,
+        feedback: [],
+        role: "",
+      });
+    } catch (error) {
+      console.error("Failed to submit form:", error);
+      alert("Failed to submit form. Please try again later.");
+    }
+  };
 
   return (
     <div className="contact-container">
@@ -12,74 +117,121 @@ const Contact = () => {
       </div>
       <div className="contact-content">
         <div className="contact-form">
-          <h2>Contact Us</h2>
+          <h2>
+            <FontAwesomeIcon icon={faPhone} style={{ marginRight: "10px" }} />
+            Contact Us
+          </h2>
           <p>
-            If you’re interested with our properties, please fill out the form
-            below and we’ll get back to you the soonest to assist you with your
-            inquiry.
+            If you’re interested in our properties, please fill out the form
+            below, and we’ll get back to you as soon as possible to assist with
+            your inquiry.
           </p>
-          <form>
-            <input type="text" placeholder="Enter your full name" required />
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Contact Number (e.g. 09123456789)"
+              name="fullName"
+              placeholder="Enter your full name"
+              value={form.fullName}
+              onChange={handleChange}
               required
             />
-            <input type="email" placeholder="Email Address" required />
-            <input type="text" placeholder="From what company are you?" />
+            <input
+              type="text"
+              name="contactNumber"
+              placeholder="Contact Number (e.g. 09123456789)"
+              value={form.contactNumber}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="company"
+              placeholder="From what company are you?"
+              value={form.company}
+              onChange={handleChange}
+            />
             <textarea
+              name="message"
               placeholder="What do you need? Tell us how we can help you find it!"
               rows="3"
+              value={form.message}
+              onChange={handleChange}
               required
             ></textarea>
 
-            <div className="btn-group btn-group-toggle">
-              <label>Are you a broker or an inquirer?</label>
+            <p>Are you a buyer or broker?</p>
+
+            <div className="btn-group" role="group" aria-label="Basic example">
               <button
                 type="button"
-                className={`role-button ${role === "broker" ? "active" : ""}`}
-                onClick={() => setRole("broker")}
+                className={`btn btn-secondary ${
+                  form.role === "Buyer" ? "active" : ""
+                }`}
+                onClick={() => handleRoleChange("Buyer")}
               >
-                Broker
+                Buyer
               </button>
               <button
                 type="button"
-                className={`role-button ${role === "inquirer" ? "active" : ""}`}
-                onClick={() => setRole("inquirer")}
+                className={`btn btn-secondary ${
+                  form.role === "Broker" ? "active" : ""
+                }`}
+                onClick={() => handleRoleChange("Broker")}
               >
-                Inquirer
+                Broker
               </button>
             </div>
 
             <div className="preferred-viewing-schedule">
               <label>Preferred Viewing Schedule</label>
               <textarea
-                placeholder="If you want to leave us a message or ask for any assistance, you may leave us a note below."
+                name="schedule"
+                placeholder="(e.g Monday to Sunday 8am-12pm)Any Monday to Saturday (9am-6pm)"
                 rows="3"
+                value={form.schedule}
+                onChange={handleChange}
               ></textarea>
-              <input type="checkbox" name="weekdays" /> Any Monday to Saturday
-              (9am-6pm)
             </div>
 
             <div className="inquiry-feedback">
               <label>Inquiry Feedback</label>
-              <input type="checkbox" name="feedback" value="email" /> Email
-              Address
-              <input type="checkbox" name="feedback" value="mobile" /> Mobile
-              Number
+              <input
+                type="checkbox"
+                name="feedback"
+                value="email"
+                checked={form.feedback.includes("email")}
+                onChange={handleFeedbackChange}
+              />{" "}
+              Email Address
+              <input
+                type="checkbox"
+                name="feedback"
+                value="mobile"
+                checked={form.feedback.includes("mobile")}
+                onChange={handleFeedbackChange}
+              />{" "}
+              Mobile Number
             </div>
 
-            {/* make a captcha here */}
-
-            <button type="submit">Send Inquiry</button>
+            <button type="submit" className="btn btn-success">
+              Send Inquiry
+            </button>
           </form>
         </div>
         <div className="contact-info">
           <h3>About Megaworld</h3>
           <p>
             Megaworld Corporation was founded by Andrew Tan and incorporated
-            under Philippine law on August 24, 1989 to engage in the
-            development, leasing and marketing of real estate. The Company
+            under Philippine law on August 24, 1989, to engage in the
+            development, leasing, and marketing of real estate. The company
             initially established a reputation for building high-end residential
             condominiums and commercial properties located in convenient urban
             locations with easy access to offices as well as leisure and

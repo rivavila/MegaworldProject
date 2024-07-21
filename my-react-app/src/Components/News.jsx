@@ -15,7 +15,7 @@ const NewsItem = ({ title, date, content }) => (
 
 // News component to fetch and display news items
 const News = () => {
-  const [news, setNews] = useState([]);
+  const [news] = useState([]);
 
   useEffect(() => {
     // Placeholder for fetching news data from an API
@@ -28,7 +28,7 @@ const News = () => {
   return (
     <div className="text-banners">
       <div id="back-text">
-        <center>Latest News from Us</center>
+        <center>LATEST NEWS FROM US</center>
       </div>
       <h1 id="front-text">
         <center>NEWS AND UPDATES</center>

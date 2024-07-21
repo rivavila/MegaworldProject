@@ -9,6 +9,7 @@ import ProjectContent from './widgets/ProjectContent';
 import ProjectInquire from './widgets/ProjectInquire';
 import states from './assets/projects.json';
 
+
 function ProjectPage() {
     const { projectNo } = useParams();
     const project = states.find(state => state.projectNo === projectNo);
@@ -25,15 +26,15 @@ function ProjectPage() {
         autoplay: true,
         autoplaySpeed: 3000,
     };
-    
+
     return (
         <div>
             {/* Full-width slider */}
-            <div>
-                <Slider {...settings} className="full-width-slider">
+            <div className="slider-container">
+                <Slider {...settings}>
                     {project.projectData.projectSlideImg.map((img, index) => (
-                        <div key={index}>
-                            <img src={require(`./assets/img/${img}`)} alt={`Slide ${index + 1}`} className="img-fluid" />
+                        <div key={index} className="slider-image-container">
+                            <img src={require(`./assets/img/${img}`)} alt={`Slide ${index + 1}`} style={{ width: '100%', height: "40vh"}}/>
                         </div>
                     ))}
                 </Slider>
@@ -43,16 +44,16 @@ function ProjectPage() {
             <div className="mx-5">
                 <div className="row mt-4">
                     <div className="col-lg-9">
-                        <BreadCrumb projectTitle={project.projectData.projectTitle}/>
+                        <BreadCrumb projectTitle={project.projectData.projectTitle} />
 
                         <div className="p-3 mt-3">
-                            <ProjectContent project={project}/>
+                            <ProjectContent project={project} />
                             {/* Left Content */}
                         </div>
                     </div>
                     <div className="col-lg-3">
                         <div className="p-3">
-                            <ProjectInquire project={project}/>
+                            <ProjectInquire project={project} />
                             {/* Right Content */}
                         </div>
                     </div>
