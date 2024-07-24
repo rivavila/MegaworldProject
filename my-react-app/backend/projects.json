@@ -1,0 +1,450 @@
+[
+  {
+    "projectNo": "1",
+    "projectCode": "Northwin_Global_City",
+    "type": "Townships",
+    "projectData": {
+      "projectTitle": "Northwin Global City",
+      "projectCover": "NorthwinGlobal1.jpg",
+      "projectSlideImg": [
+        "NorthwinGlobal1.jpg",
+        "NorthwinGlobal2.jpg",
+        "NorthwinGlobal3.jpg"
+      ],
+      "projectDescription": [
+        "Located just 20 kilometers north of Metro Manila along North Luzon Expressway (NLEX), Northwin Global City is set to become Bulacan's first-ever metropolitan hub for business and lifestyle, characterized by its own themed commercial district, high-rise residential condominiums, hotels, malls, mixed-use commercial buildings, educational institutions, and state-of-the-art office towers.",
+        "Touted as a 'global business district', Northwin Global City will also carry Megaworld's iTownship features, such as the installation of solar-powered and LED streetlights, underground cabling system, fiber optic cabling, bike lanes, storm water detention facility for flood prevention, intermodal transport terminal, and other sustainable infrastructure for mobility and connectivity.",
+        "Northwin Global City spans the municipalities of Marilao and Bocaue in Bulacan. It can be accessed via the Marilao Exit of NLEX and will be just 20 minutes away from the proposed New Manila International Airport in Bulacan, and just five minutes away from the Philippine Arena.",
+        "Turnover Year: TBD"
+      ],
+      "projectFeature": [
+        "Bulacan’s First-ever metropolitan hub for lifestyle business and lifestyle",
+        "85 Hectares"
+      ],
+      "projectEstablisment": [
+        "Theme commercial district",
+        "High-rise residential condominiums",
+        "Hotels",
+        "Malls",
+        "Mixed-use commercial building",
+        "Educational institution",
+        "State-of-the-art office towers"
+      ],
+      "projectUniqueFeatured": [
+        "To be master planned like New York City's Fifth Avenue, the 16-hectare Northwin Main Street will rise as Northwin Global City's central business district. It will be highlighted by state-of-the-art corporate buildings, shophouses, hotels, and commercial towers; as well as wide roads and avenues, promenades, walking parks, and green, open spaces for connectivity and mobility.",
+        "If you are interested on Northwin Global City, please do not hesitate to"
+      ],
+      "projectAddress": "Northwin Global City, Marilao/Bocaue, Bulacan",
+      "projectLocation": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d61725.7922871854!2d120.955436!3d14.776801!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ad512792948b%3A0xa57c0704d9b084a5!2sNorthwin%20Global%20City!5e0!3m2!1sen!2sus!4v1719914390131!5m2!1sen!2sus",
+      "projectSlides": [
+        {
+          "projectSlideTitle": "Northwin Global City's Site Development Plan",
+          "projectImg": [
+            "NorthwinGlobal1.jpg",
+            "NorthwinGlobal2.jpg",
+            "NorthwinGlobal3.jpg",
+            "NorthwinGlobal4.jpg",
+            "NorthwinGlobalMap.jpg"
+          ]
+        }
+      ]
+    },
+    "projectInquire": {
+      "projectPricing": "Pricing Upon On Inquiry",
+      "projectWhatAround": [],
+      "projectAmenities": []
+    },
+    "projectStructure": [
+      "projectSlideImg",
+      "projectTitle",
+      "projectDescription",
+      "projectFeature",
+      "projectEstablisment",
+      "projectUniqueFeatured",
+      "projectAddress",
+      "projectLocation",
+      "projectSlideTitle",
+      "projectSlides"
+    ],
+    "suggestedProjects": [
+      "Northwin_Global_City"
+    ]
+  },
+  {
+    "projectNo": "2",
+    "projectCode": "Northwin_Global_City",
+    "type": "Project",
+    "projectData": {
+      "projectTitle": "Arden Westpark Village",
+      "projectCover": "ArdenWestParkMap.jpg",
+      "projectSlideImg": [
+        "ArdenWestPark1.jpg",
+        "ArdenWestPark1.jpg"
+      ],
+      "projectDescription": [
+        "With tree-lined avenues, picture-perfect pocket parks, a one-of-a-kind bamboo tunnel, and wellness stations all around, it's so easy to fall in love with this residential community.",
+        "Welcome to Arden Westpark Village!",
+        "At approximately 15.2 hectares where 40 percent is dedicated to open spaces this residential village offers only 221 lots for sale.",
+        "Turnover Year: TBD",
+        "Details: Pre-selling Number of Units: 221 lots"
+      ],
+      "projectUniqueFeatured": [
+        "Pocket parks with colorful shrubs and tree-lined avenues",
+        "Linear Park with sitting nooks bamboo tunnel, wooden decks",
+        "Linear Park with Arbor walk",
+        "Linear Park with reflexology path, aromatic garden, yoga garden",
+        "Dog park"
+      ],
+      "projectAddress": "Arden Botanical Estate, Arden Botanical Estate, Trece Martirec City, Cavite",
+      "projectLocation": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d61863.46825032381!2d120.83111000000001!3d14.284291!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd81ed1a42c163%3A0xba5e2a8d60a61f08!2sArden%20Westpark%20Village!5e0!3m2!1sen!2sus!4v1720082865264!5m2!1sen!2sus",
+      "projectSlides": [
+        {
+          "projectSlideTitle": "Northwin Global City's Site Development Plan",
+          "projectImg": [
+            "ArdenWestPark1.jpg",
+            "ArdenWestPark2.jpg",
+            "ArdenWestPark3.jpg",
+            "ArdenWestPark4.jpg",
+            "ArdenWestParkMap.jpg"
+          ]
+        }
+      ]
+    },
+    "projectInquire": {
+      "projectPricing": "Pricing Upon Inquiry",
+      "projectWhatAround": [],
+      "projectAmenities": [
+        "Jogging Paths",
+        "25-meter lap pool",
+        "Benches",
+        "Kiddie pool and water play",
+        "Open lawn activity area",
+        "Tennis courts",
+        "Glow Swings",
+        "Children's playground with play mounds, trampoline park, interactive spun chairs",
+        "Clubhouse",
+        "Children's playroom",
+        "Function hall",
+        "Covered play courts (basketball, volleyball) and multipurpose area",
+        "Fitness gym"
+      ]
+    },
+    "projectStructure": [
+      "projectSlideImg",
+      "projectTitle",
+      "projectDescription",
+      "projectUniqueFeatured",
+      "projectAddress",
+      "projectLocation",
+      "projectSlideTitle",
+      "projectSlides"
+    ],
+    "suggestedProjects": [
+      "Northwin_Global_City"
+    ]
+  },
+  {
+    "projectNo": "3",
+    "projectCode": "La_Victoria_Global_Residences",
+    "type": "Project",
+    "projectData": {
+      "projectTitle": "La Victoria Global Residences",
+      "projectCover": "LaVictoriaGlobalResidences1.jpg",
+      "projectSlideImg": [
+        "LaVictoriaGlobalResidences2.jpg",
+        "LaVictoriaGlobalResidences2.jpg"
+      ],
+      "projectDescription": [
+        "Inspired by Spanish architecture, the 20-storey La Victoria Global Residences highlights the historical significance of Ferdinand Magellan's 'Galleon Victoria,' the first ship that circumnavigated the globe in 1521. Offering 181 spacious units, all with stunning views of the sea and the mountains, this fourth residential development in The Mactan Newtown is set to be completed in 2022 in time for the 500th anniversary of Galleon Victoria's completed voyage."
+      ],
+      "projectVideo": "BIFWweY5ey0",
+      "projectAddress": "The Mactan Newtown, Newtown Boulevard, The Mactan Newtown, Lapu-Lapu City, Cebu",
+      "projectLocation": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62806.7682485431!2d124.01402600000002!3d10.307991!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a9971d8930fd31%3A0x62bb441f4c4fd5d8!2sLa%20Victoria%20Global%20Residences!5e0!3m2!1sen!2sus!4v1720462919353!5m2!1sen!2sus",
+      "projectSlides": [
+        {
+          "projectSlideTitle": "La Victoria Global Residences's Amenities",
+          "projectImg": [
+            "LaVictoriaGlobalResidences3.jpg",
+            "LaVictoriaGlobalResidences4.jpg",
+            "LaVictoriaGlobalResidences5.jpg",
+            "LaVictoriaGlobalResidences6.jpg",
+            "LaVictoriaGlobalResidences7.jpg",
+            "LaVictoriaGlobalResidences8.jpg",
+            "LaVictoriaGlobalResidences9.jpg"
+          ]
+        },
+        {
+          "projectSlideTitle": "La Victoria Global Residences's Development Plan",
+          "projectImg": [
+            "LaVictoriaGlobalResidences10.jpg",
+            "LaVictoriaGlobalResidences11.jpg",
+            "LaVictoriaGlobalResidences12.jpg"
+          ]
+        },
+        {
+          "projectSlideTitle": "La Victoria Global Residences's Unit Layout",
+          "projectImg": [
+            "LaVictoriaGlobalResidences13.jpg",
+            "LaVictoriaGlobalResidences14.jpg",
+            "LaVictoriaGlobalResidences15.jpg",
+            "LaVictoriaGlobalResidences16.jpg",
+            "LaVictoriaGlobalResidences17.jpg",
+            "LaVictoriaGlobalResidences18.jpg",
+            "LaVictoriaGlobalResidences19.jpg",
+            "LaVictoriaGlobalResidences20.jpg"
+          ]
+        },
+        {
+          "projectSlideTitle": "La Victoria Global Residences's Model Layout",
+          "projectImg": [
+            "LaVictoriaGlobalResidences21.jpg",
+            "LaVictoriaGlobalResidences22.jpg",
+            "LaVictoriaGlobalResidences23.jpg",
+            "LaVictoriaGlobalResidences24.jpg",
+            "LaVictoriaGlobalResidences25.jpg",
+            "LaVictoriaGlobalResidences26.jpg"
+          ]
+        }
+      ]
+    },
+    "projectInquire": {
+      "projectPricing": "₱ 7,000,000 to ₱ 11,000,000",
+      "projectWhatAround": [
+        "Cebu Doctor's Hospital",
+        "Cebu Doctors' University",
+        "University of Visayas",
+        "University of San Carlos",
+        "University of the Philippines Cebu",
+        "Mactan Shrine",
+        "M City Cebu",
+        "Cebu IT Park",
+        "Fort San Pedro",
+        "Yap Sandiego Ancestral House"
+      ],
+      "projectAmenities": [
+        "Infinity Pool",
+        "Wood Sunbathing Deck",
+        "Outdoor Shower Area",
+        "Kiddie Pool",
+        "Reading Nook and Sitting Area",
+        "Children's Play Area",
+        "Fitness Trail/Jogging Path",
+        "Covered Pool Lounge",
+        "Fitness Stations",
+        "Function Room",
+        "Gym",
+        "Shower/Changing and Locker Rooms",
+        "Daycare Center"
+      ]
+    },
+    "projectStructure": [
+      "projectSlideImg",
+      "projectTitle",
+      "projectDescription",
+      "projectVideo",
+      "projectAddress",
+      "projectLocation",
+      "projectSlideTitle",
+      "projectSlides"
+    ],
+    "suggestedProjects": [
+      "Northwin_Global_City"
+    ]
+  },
+  {
+    "projectNo": "4",
+    "projectCode": "The_Lindgren",
+    "type": "Project",
+    "projectData": {
+      "projectTitle": "The Lindgren",
+      "projectCover": "TheLindgren1.jpg",
+      "projectSlideImg": [
+        "TheLindgren1.jpg",
+        "TheLindgren1.jpg",
+        "TheLindgren1.jpg"
+      ],
+      "projectDescription": [
+        "Imagine being transported to the idyllic communities in Scandinavia complemented by the welcoming vibe of nature.",
+        "Located in the 251-hectare Arden Botanical Estate is The Lindgren, a 17-hectare residential village offering lots that range from 159 square meters to 252 square meters",
+        "Designed to nurture one’s well-being, this village is the ideal place to grow a family, bond with loved ones, be active, and eventually retire.",
+        "Turnover Year: December 21, 2024 + 12 Months grace period",
+        "Number of Units: 123 Lots"
+      ],
+      "projectFeature": [
+        "17 hectares"
+      ],
+      "projectUniqueFeatured": [
+        "Guardhouse and Entry Statement",
+        "Mini Botanical Garden",
+        "Assortment of open spaces and play amenities",
+        "Clubhouse with various amenities"
+      ],
+      "projectAddress": "Westside City, Arden Botanical Estate, Trece Martires, Cavite",
+      "projectLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d73563.04742502929!2d120.76871859434227!3d14.3008888268179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd81933559d29d%3A0x6c497b2e967680b3!2sThe%20Lindgren!5e0!3m2!1sen!2sus!4v1720466035699!5m2!1sen!2sus",
+      "projectSlides": [
+        {
+          "projectSlideTitle": "The Lindgren's Amenities",
+          "projectImg": [
+            "TheLindgren2.jpg",
+            "TheLindgren3.jpg",
+            "TheLindgren4.jpg",
+            "TheLindgren1.jpg"
+          ]
+        },
+        {
+          "projectSlideTitle": "The Lindgren's Site Development Plan",
+          "projectImg": [
+            "TheLindgren5.jpg",
+            "TheLindgren6.jpg",
+            "TheLindgren5.jpg"
+          ]
+        }
+      ]
+    },
+    "projectInquire": {
+      "projectPricing": "Pricing Upon On Inquiry",
+      "projectAmenities": [
+        "Multi-purpose Hall",
+        "Multi-purpose Court",
+        "Playground",
+        "Adult Pool",
+        "Kiddie Pool",
+        "Outdoor Bar and Cabana",
+        "Jacuzzi",
+        "Fitness Gym",
+        "Sauna",
+        "Convenience Store",
+        "Collab Space",
+        "Daycare"
+      ]
+    },
+    "projectStructure": [
+      "projectSlideImg",
+      "projectTitle",
+      "projectDescription",
+      "projectFeature",
+      "projectUniqueFeatured",
+      "projectAddress",
+      "projectLocation",
+      "projectSlideTitle",
+      "projectSlides"
+    ],
+    "suggestedProjects": [
+      "Northwin_Global_City"
+    ]
+  },
+  {
+    "projectNo": "5",
+    "projectCode": "La_Cassia_Residences",
+    "type": "Project",
+    "projectData": {
+      "projectTitle": "La Cassia Residences",
+      "projectCover": "LaCassiaResidences1.jpg",
+      "projectSlideImg": [
+        "LaCassiaResidences1.jpg",
+        "LaCassiaResidences1.jpg"
+      ],
+      "projectDescription": [
+        "With varied layouts, ideal for every kind of family, homes at this 16-storey residential condo development are tailored fit to make one's stay a relaxing one.",
+        "Set rise inside the 140-hecatere Maple Grove township in General Trias, Cavite, La Cassia Residences will not only offer complete lifestyle experience for its residents but also a prime address surrounded by natural foliage while introducing the beauty of the outdoors into each home.",
+        "Residents of La Cassia will wake up to mornings of greeneries and open spaces.",
+        "Turnover Year: January 31, 2025 + 6 months grace period",
+        "Details: Pre-selling",
+        "Number of Units: 238 Units"
+      ],
+      "projectFeature": [
+        "17 hectares"
+      ],
+      "projectAddress": "Maple Grove, Maple Grove, EPZA Diversion Road, Brgy. Tejero, Gen. Trias City, Cavite",
+      "projectLocation": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d61831.988400298535!2d120.87054100000002!3d14.398358!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33962cbf3f131ce5%3A0x5e9a9eb613487e98!2sMaple%20Grove!5e0!3m2!1sen!2sus!4v1720469897038!5m2!1sen!2sus",
+      "projectSlides": [
+        {
+          "projectSlideTitle": "La Cassia Residences's Amenities",
+          "projectImg": [
+            "LaCassiaResidences2.jpg",
+            "LaCassiaResidences3.jpg",
+            "LaCassiaResidences4.jpg"
+          ]
+        },
+        {
+          "projectSlideTitle": "La Cassia Residences's Unit Layout",
+          "projectImg": [
+            "LaCassiaResidences5.jpg",
+            "LaCassiaResidences6.jpg",
+            "LaCassiaResidences5.jpg"
+          ]
+        }
+      ]
+    },
+    "projectInquire": {
+      "projectPricing": "Pricing Upon On Inquiry",
+      "projectAmenities": []
+    },
+    "projectStructure": [
+      "projectSlideImg",
+      "projectTitle",
+      "projectDescription",
+      "projectFeature",
+      "projectAddress",
+      "projectLocation",
+      "projectSlideTitle",
+      "projectSlides"
+    ],
+    "suggestedProjects": [
+      "Northwin_Global_City"
+    ]
+  },
+  {
+    "projectNo": "6",
+    "projectCode": "Highland_City",
+    "type": "Project",
+    "projectData": {
+      "projectTitle": "Highland City",
+      "projectCover": "HighlandCity1.jpg",
+      "projectSlideImg": [
+        "HighlandCity1.jpg",
+        "HighlandCity1.jpg"
+      ],
+      "projectDescription": [
+        "With varied layouts, ideal for every kind of family, homes at this 16-storey residential condo development are tailored fit to make one’s stay a relaxing one.",
+        "Set to rise inside the 140-hectare Maple Grove township in General Trias, Cavite, La Cassia Residences will not only offer complete lifestyle experience for its residents but also a prime address surrounded by natural foliage while introducing the beauty of the outdoors into each home.",
+        "Residents of La Cassia will wake up to mornings of greeneries and open spaces.",
+        "Features: Approximately 1,431 sqm",
+        "Turnover Year: January 31, 2025 + 6 months grace period",
+        "Details: Pre-selling",
+        "Number of Units: 238 Units test"
+      ],
+      "projectUniqueFeatured": [
+        "Residential lobby with reception counter and lounge area",
+        "One (1) passenger elevator",
+        "One (1) Service/ Passenger elevator",
+        "Security command center for 24-hour monitoring of all building facilities",
+        "Video-phone security system connecting reception/ security counter to all units",
+        "Overhead tank and underground cistern for ample water supply",
+        "Fully addressable fire detection and alarm system for common areas",
+        "Fire sprinkler system for common areas",
+        "Standby power generator for 100% back-up power for common areas",
+        "Closed circuit Tv (CCTV) monitoring for selected areas",
+        "Building administration/ security office",
+        "Annunciator panel at elevator lobbies"
+      ],
+      "projectAddress": "Maple Grove, F. Felix Avenue, Cainta, Rizal",
+      "projectLocation": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d61775.53147871785!2d121.107244!3d14.600744!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b97f0338711d%3A0xa6e90768fb8e285c!2sHigh%20Land%20City!5e0!3m2!1sen!2sus!4v1720472939274!5m2!1sen!2sus",
+      "projectSlides": []
+    },
+    "projectInquire": {
+      "projectPricing": "Pricing Upon On Inquiry"
+    },
+    "projectStructure": [
+      "projectSlideImg",
+      "projectTitle",
+      "projectDescription",
+      "projectUniqueFeatured",
+      "projectAddress",
+      "projectLocation"
+    ],
+    "suggestedProjects": [
+      "Northwin_Global_City"
+    ]
+  }
+]

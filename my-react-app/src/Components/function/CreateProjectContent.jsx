@@ -1,13 +1,15 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/slide-show.css';
 import { useDropzone } from 'react-dropzone';
 import DeleteButton from '../widgets/DeleteButton';
+import axiosInstance from '../../axiosConfig';
 
 function CreateProjectContent() {
     const [projectData, setProjectData] = useState({
         projectTitle: '',
-        projectDescription: '',
+        projectDescription: [],
         projectAddress: '',
         projectLocation: '',
         projectFeature: [],
@@ -17,7 +19,11 @@ function CreateProjectContent() {
         projectStartDate: '',
         projectEndDate: '',
         projectBudget: '',
-        projectVideo: '', // Added projectVideo to the state
+        projectVideo: '',
+        projectCover: '',
+        type: 'Project',
+        projectPricing: '',
+        projectAmenities: []
     });
 
     const [newFeature, setNewFeature] = useState('');
@@ -25,12 +31,21 @@ function CreateProjectContent() {
     const [newUniqueFeature, setNewUniqueFeature] = useState('');
     const [newSlideTitle, setNewSlideTitle] = useState('');
     const [newSlideImgs, setNewSlideImgs] = useState([]);
+    const [newDescription, setNewDescription] = useState('');
+    const [newAmenity, setNewAmenity] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProjectData({
             ...projectData,
             [name]: value
+        });
+    };
+
+    const handleFileChange = (e) => {
+        setProjectData({
+            ...projectData,
+            projectCover: e.target.files[0]
         });
     };
 
@@ -85,6 +100,40 @@ function CreateProjectContent() {
         });
     };
 
+    const addDescription = () => {
+        if (newDescription.trim() !== '') {
+            setProjectData({
+                ...projectData,
+                projectDescription: [...projectData.projectDescription, newDescription]
+            });
+            setNewDescription('');
+        }
+    };
+
+    const deleteDescription = (index) => {
+        setProjectData({
+            ...projectData,
+            projectDescription: projectData.projectDescription.filter((_, i) => i !== index)
+        });
+    };
+
+    const addAmenity = () => {
+        if (newAmenity.trim() !== '') {
+            setProjectData({
+                ...projectData,
+                projectAmenities: [...projectData.projectAmenities, newAmenity]
+            });
+            setNewAmenity('');
+        }
+    };
+
+    const deleteAmenity = (index) => {
+        setProjectData({
+            ...projectData,
+            projectAmenities: projectData.projectAmenities.filter((_, i) => i !== index)
+        });
+    };
+
     const onDrop = useCallback((acceptedFiles) => {
         setNewSlideImgs([...newSlideImgs, ...acceptedFiles.map(file => URL.createObjectURL(file))]);
     }, [newSlideImgs]);
@@ -105,10 +154,53 @@ function CreateProjectContent() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const deleteSlide = (index) => {
+        setProjectData({
+            ...projectData,
+            projectSlides: projectData.projectSlides.filter((_, i) => i !== index)
+        });
+    };
+
+    const generateProjectNo = () => Math.floor(Math.random() * 1000000);
+    const generateProjectCode = (title) => title.split(' ').join('_');
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(projectData);
-        // Add form submission logic here
+
+        const projectStructure = [
+            "projectSlideImg",
+            "projectTitle",
+            "projectDescription",
+            "projectFeature",
+            "projectAddress",
+            "projectLocation",
+            "projectSlideTitle",
+            "projectSlides"
+        ].filter(key => projectData[key] && projectData[key].length > 0);
+
+        const finalData = {
+            projectNo: generateProjectNo(),
+            projectCode: generateProjectCode(projectData.projectTitle),
+            type: projectData.type,
+            projectData: {
+                ...projectData,
+                projectCover: projectData.projectCover.name, // assuming you want to save only the file name
+                projectSlides: projectData.projectSlides
+            },
+            projectInquire: {
+                projectPricing: projectData.projectPricing,
+                projectAmenities: projectData.projectAmenities
+            },
+            projectStructure,
+            suggestedProjects: []
+        };
+
+        try {
+            await axiosInstance.post('/projects', finalData);
+            console.log('Project added successfully');
+        } catch (error) {
+            console.error('Error adding project:', error);
+        }
     };
 
     return (
@@ -127,91 +219,76 @@ function CreateProjectContent() {
                     />
                 </div>
 
+                <hr />
+
+                <div className="mb-3">
+                    <label htmlFor="type" className="form-label fs-5">Type</label>
+                    <select
+                        id="type"
+                        name="type"
+                        className="form-select"
+                        value={projectData.type}
+                        onChange={handleChange}
+                    >
+                        <option value="Townfield">Townfield</option>
+                        <option value="Project">Project</option>
+                    </select>
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="projectCover" className="form-label fs-5">Project Cover</label>
+                    <input
+                        type="file"
+                        id="projectCover"
+                        name="projectCover"
+                        className="form-control"
+                        onChange={handleFileChange}
+                    />
+                </div>
+
+                <hr />
+
                 <div className="mb-3">
                     <label htmlFor="projectDescription" className="form-label fs-5">Project Description</label>
-                    <textarea
-                        id="projectDescription"
-                        name="projectDescription"
-                        className="form-control"
-                        value={projectData.projectDescription}
-                        onChange={(e) => setProjectData({ ...projectData, projectDescription: e.target.value })}
-                    />
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            id="projectDescription"
+                            className="form-control"
+                            value={newDescription}
+                            onChange={(e) => setNewDescription(e.target.value)}
+                        />
+
+                    </div>
+                </div>
+
+                <div className='mb-3'>
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={addDescription}
+                    >
+                        Add
+                    </button>
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="projectAddress" className="form-label fs-5">Project Address</label>
-                    <input
-                        type="text"
-                        id="projectAddress"
-                        name="projectAddress"
-                        className="form-control"
-                        value={projectData.projectAddress}
-                        onChange={handleChange}
-                    />
+                    <ul className="list-group">
+                        {projectData.projectDescription.map((description, index) => (
+                            <li key={index} className="list-group-item d-flex align-items-center">
+                                <span className="d-flex align-items-center fs-6 flex-grow-1 me-2">
+                                    {description}
+                                </span>
+                                <DeleteButton onClick={() => deleteDescription(index)} />
+                            </li>
+                        ))}
+                    </ul>
                 </div>
 
-                <div className="mb-3">
-                    <label htmlFor="projectLocation" className="form-label fs-5">Project Location (Google Maps Embed URL)</label>
-                    <input
-                        type="text"
-                        id="projectLocation"
-                        name="projectLocation"
-                        className="form-control"
-                        value={projectData.projectLocation}
-                        onChange={handleChange}
-                    />
-                </div>
+                <hr />
 
                 <div className="mb-3">
-                    <label htmlFor="projectStartDate" className="form-label fs-5">Project Start Date</label>
-                    <input
-                        type="date"
-                        id="projectStartDate"
-                        name="projectStartDate"
-                        className="form-control"
-                        value={projectData.projectStartDate}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label htmlFor="projectEndDate" className="form-label fs-5">Project End Date</label>
-                    <input
-                        type="date"
-                        id="projectEndDate"
-                        name="projectEndDate"
-                        className="form-control"
-                        value={projectData.projectEndDate}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label htmlFor="projectBudget" className="form-label fs-5">Project Budget</label>
-                    <input
-                        type="number"
-                        id="projectBudget"
-                        name="projectBudget"
-                        className="form-control"
-                        value={projectData.projectBudget}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label htmlFor="projectVideo" className="form-label fs-5">Project Video (YouTube ID)</label>
-                    <input
-                        type="text"
-                        id="projectVideo"
-                        name="projectVideo"
-                        className="form-control"
-                        value={projectData.projectVideo}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label htmlFor="projectFeature" className="form-label fs-5">Feature</label>
+                    <label htmlFor="projectFeature" className="form-label fs-5">Features</label>
                     <div className="input-group">
                         <input
                             type="text"
@@ -220,14 +297,18 @@ function CreateProjectContent() {
                             value={newFeature}
                             onChange={(e) => setNewFeature(e.target.value)}
                         />
-                        <button
-                            type="button"
-                            className="btn btn-secondary"
-                            onClick={addFeature}
-                        >
-                            Add
-                        </button>
+
                     </div>
+                </div>
+
+                <div className='mb-3'>
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={addFeature}
+                    >
+                        Add
+                    </button>
                 </div>
 
                 <div className="mb-3">
@@ -243,8 +324,10 @@ function CreateProjectContent() {
                     </ul>
                 </div>
 
+                <hr />
+
                 <div className="mb-3">
-                    <label htmlFor="projectEstablishment" className="form-label fs-5">Establishment</label>
+                    <label htmlFor="projectEstablishment" className="form-label fs-5">Establishments</label>
                     <div className="input-group">
                         <input
                             type="text"
@@ -253,14 +336,18 @@ function CreateProjectContent() {
                             value={newEstablishment}
                             onChange={(e) => setNewEstablishment(e.target.value)}
                         />
-                        <button
-                            type="button"
-                            className="btn btn-secondary"
-                            onClick={addEstablishment}
-                        >
-                            Add
-                        </button>
+
                     </div>
+                </div>
+
+                <div className='mb-3'>
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={addEstablishment}
+                    >
+                        Add
+                    </button>
                 </div>
 
                 <div className="mb-3">
@@ -276,8 +363,10 @@ function CreateProjectContent() {
                     </ul>
                 </div>
 
+                <hr />
+
                 <div className="mb-3">
-                    <label htmlFor="projectUniqueFeature" className="form-label fs-5">Unique Feature</label>
+                    <label htmlFor="projectUniqueFeature" className="form-label fs-5">Unique Features</label>
                     <div className="input-group">
                         <input
                             type="text"
@@ -286,14 +375,18 @@ function CreateProjectContent() {
                             value={newUniqueFeature}
                             onChange={(e) => setNewUniqueFeature(e.target.value)}
                         />
-                        <button
-                            type="button"
-                            className="btn btn-secondary"
-                            onClick={addUniqueFeature}
-                        >
-                            Add
-                        </button>
+
                     </div>
+                </div>
+
+                <div className='mb-3'>
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={addUniqueFeature}
+                    >
+                        Add
+                    </button>
                 </div>
 
                 <div className="mb-3">
@@ -309,11 +402,54 @@ function CreateProjectContent() {
                     </ul>
                 </div>
 
+                <hr />
+
+                <div className="mb-3">
+                    <label htmlFor="projectAmenities" className="form-label fs-5">Amenities</label>
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            id="projectAmenities"
+                            className="form-control"
+                            value={newAmenity}
+                            onChange={(e) => setNewAmenity(e.target.value)}
+                        />
+
+                    </div>
+                </div>
+
+
+                <div className='mb-3'>
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={addAmenity}
+                    >
+                        Add
+                    </button>
+                </div>
+
+                <div className="mb-3">
+                    <ul className="list-group">
+                        {projectData.projectAmenities.map((amenity, index) => (
+                            <li key={index} className="list-group-item d-flex align-items-center">
+                                <span className="d-flex align-items-center fs-6 flex-grow-1 me-2">
+                                    {amenity}
+                                </span>
+                                <DeleteButton onClick={() => deleteAmenity(index)} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <hr />
+
                 <div className="mb-3">
                     <label htmlFor="projectSlideTitle" className="form-label fs-5">Slide Title</label>
                     <input
                         type="text"
                         id="projectSlideTitle"
+                        name="projectSlideTitle"
                         className="form-control"
                         value={newSlideTitle}
                         onChange={(e) => setNewSlideTitle(e.target.value)}
@@ -322,57 +458,47 @@ function CreateProjectContent() {
 
                 <div className="mb-3">
                     <label htmlFor="projectSlideImg" className="form-label fs-5">Slide Images</label>
-                    <div {...getRootProps({ className: 'dropzone' })}>
+                    <div {...getRootProps()} className="dropzone border border-secondary rounded p-3 text-center">
                         <input {...getInputProps()} />
-                        <p>Drag 'n' drop images here, or click to select multiple</p>
+                        <p className="mb-0">Drag & drop images here, or click to select images</p>
                     </div>
-                    {newSlideImgs.length > 0 && (
-                        <div className="mt-2">
-                            {newSlideImgs.map((img, index) => (
-                                <img
-                                    key={index}
-                                    src={img}
-                                    alt={`Preview ${index}`}
-                                    className="img-thumbnail me-2"
-                                    style={{ width: '25%', height: '25%' }}
-                                />
-                            ))}
-                        </div>
-                    )}
                 </div>
-
-                <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={addSlide}
-                >
-                    Add Slide
-                </button>
 
                 <div className="mb-3">
                     <ul className="list-group">
-                        {projectData.projectSlides.map((slide, index) => (
-                            <li key={index} className="list-group-item mb-3">
-                                <h5>Slide Title: {slide.projectSlideTitle}</h5>
-                                <div className="d-flex flex-wrap">
-                                    {slide.projectImgs.map((img, imgIndex) => (
-                                        <img
-                                            key={imgIndex}
-                                            src={img}
-                                            alt={`Slide ${index} Image ${imgIndex}`}
-                                            className="img-thumbnail me-2 mb-2"
-                                            style={{ width: '25%', height: '25%' }}
-                                        />
-                                    ))}
-                                </div>
+                        {newSlideImgs.map((img, index) => (
+                            <li key={index} className="list-group-item d-flex align-items-center">
+                                <img src={img} alt={`Slide ${index + 1}`} className="img-thumbnail me-2" style={{ width: '25%', height: '25%' }} />
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <div className="mb-3 mt-3">
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="mb-3">
+                    <button type="button" className="btn btn-secondary" onClick={addSlide}>
+                        Add Slide
+                    </button>
                 </div>
+
+                <div className="mb-3">
+                    <ul className="list-group">
+                        {projectData.projectSlides.map((slide, index) => (
+                            <li key={index} className="list-group-item d-flex align-items-center">
+                                <div className="flex-grow-1 me-2">
+                                    <h5 className="mb-1">{slide.projectSlideTitle}</h5>
+                                    <div className="d-flex">
+                                        {slide.projectImgs.map((img, imgIndex) => (
+                                            <img key={imgIndex} src={img} alt={`Slide ${index + 1} - Image ${imgIndex + 1}`} className="img-thumbnail me-2" style={{ width: '25%', height: '25%' }} />
+                                        ))}
+                                    </div>
+                                </div>
+                                <DeleteButton onClick={() => deleteSlide(index)} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </form>
         </div>
     );
