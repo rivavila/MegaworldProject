@@ -446,5 +446,69 @@
     "suggestedProjects": [
       "Northwin_Global_City"
     ]
+  },
+  {
+    "projectNo": 643484,
+    "projectCode": "qwe",
+    "type": "Project",
+    "projectData": {
+      "projectTitle": "qwe",
+      "projectSlideImg": [
+        {},
+        {},
+        {}
+      ],
+      "projectDescription": [
+        "qwe"
+      ],
+      "projectFeature": [
+        "qwasd"
+      ],
+      "projectAddress": "qwe",
+      "projectLocation": "qwe",
+      "projectVideo": "",
+      "projectCover": {},
+      "projectSlides": [
+        {
+          "projectSlideTitle": "qwssssss",
+          "projectImg": [
+            {
+              "path": "Untitled.png"
+            },
+            {
+              "path": "Untitled1.png"
+            },
+            {
+              "path": "Untitled2.png"
+            }
+          ]
+        }
+      ],
+      "projectEstablishment": [
+        "qweqasd"
+      ],
+      "projectUniqueFeature": [
+        "asdasdas"
+      ]
+    },
+    "projectInquire": {
+      "projectPricing": "qwa",
+      "projectAmenities": [
+        "sdda"
+      ],
+      "projectWhatAround": [
+        "adasd"
+      ]
+    },
+    "projectStructure": [
+      "projectSlideImg",
+      "projectTitle",
+      "projectDescription",
+      "projectFeature",
+      "projectAddress",
+      "projectLocation",
+      "projectSlides"
+    ],
+    "suggestedProjects": []
   }
 ]

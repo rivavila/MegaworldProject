@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable no-unused-vars */
 import React, { useState, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/slide-show.css';
@@ -7,8 +7,9 @@ import DeleteButton from '../widgets/DeleteButton';
 import axiosInstance from '../../axiosConfig';
 
 function CreateProjectContent() {
-    const [projectData, setProjectData] = useState({
+    const [formData, setProjectData] = useState({
         projectTitle: '',
+        projectSlideImg: [],
         projectDescription: [],
         projectAddress: '',
         projectLocation: '',
@@ -18,12 +19,12 @@ function CreateProjectContent() {
         projectSlides: [],
         projectStartDate: '',
         projectEndDate: '',
-        projectBudget: '',
         projectVideo: '',
         projectCover: '',
         type: 'Project',
         projectPricing: '',
-        projectAmenities: []
+        projectAmenities: [],
+        projectWhatAround: []
     });
 
     const [newFeature, setNewFeature] = useState('');
@@ -33,27 +34,33 @@ function CreateProjectContent() {
     const [newSlideImgs, setNewSlideImgs] = useState([]);
     const [newDescription, setNewDescription] = useState('');
     const [newAmenity, setNewAmenity] = useState('');
+    const [newWhatAround, setWhatAround] = useState('');
+    const [coverPreview, setCoverPreview] = useState('');
+
+    console.log(formData);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProjectData({
-            ...projectData,
+            ...formData,
             [name]: value
         });
     };
 
     const handleFileChange = (e) => {
+        const file = e.target.files[0];
         setProjectData({
-            ...projectData,
-            projectCover: e.target.files[0]
+            ...formData,
+            projectCover: file
         });
+        setCoverPreview(URL.createObjectURL(file));
     };
 
     const addFeature = () => {
         if (newFeature.trim() !== '') {
             setProjectData({
-                ...projectData,
-                projectFeature: [...projectData.projectFeature, newFeature]
+                ...formData,
+                projectFeature: [...formData.projectFeature, newFeature]
             });
             setNewFeature('');
         }
@@ -61,16 +68,16 @@ function CreateProjectContent() {
 
     const deleteFeature = (index) => {
         setProjectData({
-            ...projectData,
-            projectFeature: projectData.projectFeature.filter((_, i) => i !== index)
+            ...formData,
+            projectFeature: formData.projectFeature.filter((_, i) => i !== index)
         });
     };
 
     const addEstablishment = () => {
         if (newEstablishment.trim() !== '') {
             setProjectData({
-                ...projectData,
-                projectEstablishment: [...projectData.projectEstablishment, newEstablishment]
+                ...formData,
+                projectEstablishment: [...formData.projectEstablishment, newEstablishment]
             });
             setNewEstablishment('');
         }
@@ -78,16 +85,16 @@ function CreateProjectContent() {
 
     const deleteEstablishment = (index) => {
         setProjectData({
-            ...projectData,
-            projectEstablishment: projectData.projectEstablishment.filter((_, i) => i !== index)
+            ...formData,
+            projectEstablishment: formData.projectEstablishment.filter((_, i) => i !== index)
         });
     };
 
     const addUniqueFeature = () => {
         if (newUniqueFeature.trim() !== '') {
             setProjectData({
-                ...projectData,
-                projectUniqueFeature: [...projectData.projectUniqueFeature, newUniqueFeature]
+                ...formData,
+                projectUniqueFeature: [...formData.projectUniqueFeature, newUniqueFeature]
             });
             setNewUniqueFeature('');
         }
@@ -95,16 +102,16 @@ function CreateProjectContent() {
 
     const deleteUniqueFeature = (index) => {
         setProjectData({
-            ...projectData,
-            projectUniqueFeature: projectData.projectUniqueFeature.filter((_, i) => i !== index)
+            ...formData,
+            projectUniqueFeature: formData.projectUniqueFeature.filter((_, i) => i !== index)
         });
     };
 
     const addDescription = () => {
         if (newDescription.trim() !== '') {
             setProjectData({
-                ...projectData,
-                projectDescription: [...projectData.projectDescription, newDescription]
+                ...formData,
+                projectDescription: [...formData.projectDescription, newDescription]
             });
             setNewDescription('');
         }
@@ -112,16 +119,16 @@ function CreateProjectContent() {
 
     const deleteDescription = (index) => {
         setProjectData({
-            ...projectData,
-            projectDescription: projectData.projectDescription.filter((_, i) => i !== index)
+            ...formData,
+            projectDescription: formData.projectDescription.filter((_, i) => i !== index)
         });
     };
 
     const addAmenity = () => {
         if (newAmenity.trim() !== '') {
             setProjectData({
-                ...projectData,
-                projectAmenities: [...projectData.projectAmenities, newAmenity]
+                ...formData,
+                projectAmenities: [...formData.projectAmenities, newAmenity]
             });
             setNewAmenity('');
         }
@@ -129,13 +136,30 @@ function CreateProjectContent() {
 
     const deleteAmenity = (index) => {
         setProjectData({
-            ...projectData,
-            projectAmenities: projectData.projectAmenities.filter((_, i) => i !== index)
+            ...formData,
+            projectAmenities: formData.projectAmenities.filter((_, i) => i !== index)
+        });
+    };
+
+    const addWhatAround = () => {
+        if (newWhatAround.trim() !== '') {
+            setProjectData({
+                ...formData,
+                projectWhatAround: [...formData.projectWhatAround, newWhatAround]
+            });
+            setWhatAround('');
+        }
+    };
+
+    const deleteWhatAround = (index) => {
+        setProjectData({
+            ...formData,
+            projectWhatAround: formData.projectWhatAround.filter((_, i) => i !== index)
         });
     };
 
     const onDrop = useCallback((acceptedFiles) => {
-        setNewSlideImgs([...newSlideImgs, ...acceptedFiles.map(file => URL.createObjectURL(file))]);
+        setNewSlideImgs([...newSlideImgs, ...acceptedFiles]);
     }, [newSlideImgs]);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: 'image/*' });
@@ -143,10 +167,13 @@ function CreateProjectContent() {
     const addSlide = () => {
         if (newSlideTitle.trim() !== '' && newSlideImgs.length > 0) {
             setProjectData({
-                ...projectData,
+                ...formData,
                 projectSlides: [
-                    ...projectData.projectSlides,
-                    { projectSlideTitle: newSlideTitle, projectImgs: newSlideImgs }
+                    ...formData.projectSlides,
+                    {
+                        projectSlideTitle: newSlideTitle,
+                        projectImg: newSlideImgs
+                    }
                 ]
             });
             setNewSlideTitle('');
@@ -156,8 +183,8 @@ function CreateProjectContent() {
 
     const deleteSlide = (index) => {
         setProjectData({
-            ...projectData,
-            projectSlides: projectData.projectSlides.filter((_, i) => i !== index)
+            ...formData,
+            projectSlides: formData.projectSlides.filter((_, i) => i !== index)
         });
     };
 
@@ -176,20 +203,29 @@ function CreateProjectContent() {
             "projectLocation",
             "projectSlideTitle",
             "projectSlides"
-        ].filter(key => projectData[key] && projectData[key].length > 0);
+        ].filter(key => formData[key] && formData[key].length > 0);
 
         const finalData = {
             projectNo: generateProjectNo(),
-            projectCode: generateProjectCode(projectData.projectTitle),
-            type: projectData.type,
+            projectCode: generateProjectCode(formData.projectTitle),
+            type: formData.type,
             projectData: {
-                ...projectData,
-                projectCover: projectData.projectCover.name, // assuming you want to save only the file name
-                projectSlides: projectData.projectSlides
+                projectTitle: formData.projectTitle,
+                projectSlideImg: formData.projectSlideImg,
+                projectDescription: formData.projectDescription,
+                projectFeature: formData.projectFeature,
+                projectAddress: formData.projectAddress,
+                projectLocation: formData.projectLocation,
+                projectVideo: formData.projectVideo,
+                projectCover: formData.projectCover,
+                projectSlides: formData.projectSlides,
+                projectEstablishment: formData.projectEstablishment,
+                projectUniqueFeature: formData.projectUniqueFeature
             },
             projectInquire: {
-                projectPricing: projectData.projectPricing,
-                projectAmenities: projectData.projectAmenities
+                projectPricing: formData.projectPricing,
+                projectAmenities: formData.projectAmenities,
+                projectWhatAround: formData.projectWhatAround
             },
             projectStructure,
             suggestedProjects: []
@@ -214,7 +250,7 @@ function CreateProjectContent() {
                         id="projectTitle"
                         name="projectTitle"
                         className="form-control"
-                        value={projectData.projectTitle}
+                        value={formData.projectTitle}
                         onChange={handleChange}
                     />
                 </div>
@@ -227,7 +263,7 @@ function CreateProjectContent() {
                         id="type"
                         name="type"
                         className="form-select"
-                        value={projectData.type}
+                        value={formData.type}
                         onChange={handleChange}
                     >
                         <option value="Townfield">Townfield</option>
@@ -235,6 +271,7 @@ function CreateProjectContent() {
                     </select>
                 </div>
 
+                {/* Project Cover */}
                 <div className="mb-3">
                     <label htmlFor="projectCover" className="form-label fs-5">Project Cover</label>
                     <input
@@ -244,158 +281,152 @@ function CreateProjectContent() {
                         className="form-control"
                         onChange={handleFileChange}
                     />
+                    {coverPreview && (
+                        <div className="mt-2">
+                            <img src={coverPreview} alt="Project Cover Preview" style={{ maxWidth: '200px' }} />
+                        </div>
+                    )}
                 </div>
 
                 <hr />
 
+                {/* Slide Images */}
+                <div className="mb-3">
+                    <label htmlFor="slideImages" className="form-label fs-5">Slide Images</label>
+                    <input
+                        type="file"
+                        id="slideImages"
+                        name="slideImages"
+                        className="form-control"
+                        multiple
+                        onChange={(e) => {
+                            const files = Array.from(e.target.files);
+                            setProjectData({
+                                ...formData,
+                                projectSlideImg: [...formData.projectSlideImg, ...files]
+                            });
+                        }}
+                    />
+                </div>
+
+
+
+                <hr />
+
+                <div className="mb-3">
+                    <label htmlFor="projectAddress" className="form-label fs-5">Project Address</label>
+                    <input
+                        type="text"
+                        id="projectAddress"
+                        name="projectAddress"
+                        className="form-control"
+                        value={formData.projectAddress}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="projectLocation" className="form-label fs-5">Project Location</label>
+                    <input
+                        type="text"
+                        id="projectLocation"
+                        name="projectLocation"
+                        className="form-control"
+                        value={formData.projectLocation}
+                        onChange={handleChange}
+                    />
+                </div>
+
                 <div className="mb-3">
                     <label htmlFor="projectDescription" className="form-label fs-5">Project Description</label>
-                    <div className="input-group">
+                    <div className="input-group mb-3">
                         <input
                             type="text"
-                            id="projectDescription"
+                            id="newDescription"
+                            name="newDescription"
                             className="form-control"
                             value={newDescription}
                             onChange={(e) => setNewDescription(e.target.value)}
                         />
 
                     </div>
-                </div>
-
-                <div className='mb-3'>
-                    <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={addDescription}
-                    >
-                        Add
-                    </button>
-                </div>
-
-                <div className="mb-3">
+                    <button type="button" className="btn btn-primary" onClick={addDescription}>Add</button>
                     <ul className="list-group">
-                        {projectData.projectDescription.map((description, index) => (
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <span className="d-flex align-items-center fs-6 flex-grow-1 me-2">
-                                    {description}
-                                </span>
+                        {formData.projectDescription.map((desc, index) => (
+                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                                {desc}
                                 <DeleteButton onClick={() => deleteDescription(index)} />
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <hr />
-
                 <div className="mb-3">
-                    <label htmlFor="projectFeature" className="form-label fs-5">Features</label>
-                    <div className="input-group">
+                    <label htmlFor="projectFeature" className="form-label fs-5">Project Feature</label>
+                    <div className="input-group mb-3">
                         <input
                             type="text"
-                            id="projectFeature"
+                            id="newFeature"
+                            name="newFeature"
                             className="form-control"
                             value={newFeature}
                             onChange={(e) => setNewFeature(e.target.value)}
                         />
 
                     </div>
-                </div>
-
-                <div className='mb-3'>
-                    <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={addFeature}
-                    >
-                        Add
-                    </button>
-                </div>
-
-                <div className="mb-3">
+                    <button type="button" className="btn btn-primary" onClick={addFeature}>Add</button>
                     <ul className="list-group">
-                        {projectData.projectFeature.map((feature, index) => (
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <span className="d-flex align-items-center fs-6 flex-grow-1 me-2">
-                                    {feature}
-                                </span>
+                        {formData.projectFeature.map((feature, index) => (
+                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                                {feature}
                                 <DeleteButton onClick={() => deleteFeature(index)} />
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <hr />
-
                 <div className="mb-3">
-                    <label htmlFor="projectEstablishment" className="form-label fs-5">Establishments</label>
-                    <div className="input-group">
+                    <label htmlFor="projectEstablishment" className="form-label fs-5">Project Establishment</label>
+                    <div className="input-group mb-3">
                         <input
                             type="text"
-                            id="projectEstablishment"
+                            id="newEstablishment"
+                            name="newEstablishment"
                             className="form-control"
                             value={newEstablishment}
                             onChange={(e) => setNewEstablishment(e.target.value)}
                         />
 
                     </div>
-                </div>
-
-                <div className='mb-3'>
-                    <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={addEstablishment}
-                    >
-                        Add
-                    </button>
-                </div>
-
-                <div className="mb-3">
+                    <button type="button" className="btn btn-primary" onClick={addEstablishment}>Add</button>
                     <ul className="list-group">
-                        {projectData.projectEstablishment.map((establishment, index) => (
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <span className="d-flex align-items-center fs-6 flex-grow-1 me-2">
-                                    {establishment}
-                                </span>
+                        {formData.projectEstablishment.map((establishment, index) => (
+                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                                {establishment}
                                 <DeleteButton onClick={() => deleteEstablishment(index)} />
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <hr />
-
                 <div className="mb-3">
-                    <label htmlFor="projectUniqueFeature" className="form-label fs-5">Unique Features</label>
-                    <div className="input-group">
+                    <label htmlFor="projectUniqueFeature" className="form-label fs-5">Project Unique Feature</label>
+                    <div className="input-group mb-3">
                         <input
                             type="text"
-                            id="projectUniqueFeature"
+                            id="newUniqueFeature"
+                            name="newUniqueFeature"
                             className="form-control"
                             value={newUniqueFeature}
                             onChange={(e) => setNewUniqueFeature(e.target.value)}
                         />
 
                     </div>
-                </div>
-
-                <div className='mb-3'>
-                    <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={addUniqueFeature}
-                    >
-                        Add
-                    </button>
-                </div>
-
-                <div className="mb-3">
+                    <button type="button" className="btn btn-primary" onClick={addUniqueFeature}>Add</button>
                     <ul className="list-group">
-                        {projectData.projectUniqueFeature.map((uniqueFeature, index) => (
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <span className="d-flex align-items-center fs-6 flex-grow-1 me-2">
-                                    {uniqueFeature}
-                                </span>
+                        {formData.projectUniqueFeature.map((uniqueFeature, index) => (
+                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                                {uniqueFeature}
                                 <DeleteButton onClick={() => deleteUniqueFeature(index)} />
                             </li>
                         ))}
@@ -405,47 +436,7 @@ function CreateProjectContent() {
                 <hr />
 
                 <div className="mb-3">
-                    <label htmlFor="projectAmenities" className="form-label fs-5">Amenities</label>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            id="projectAmenities"
-                            className="form-control"
-                            value={newAmenity}
-                            onChange={(e) => setNewAmenity(e.target.value)}
-                        />
-
-                    </div>
-                </div>
-
-
-                <div className='mb-3'>
-                    <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={addAmenity}
-                    >
-                        Add
-                    </button>
-                </div>
-
-                <div className="mb-3">
-                    <ul className="list-group">
-                        {projectData.projectAmenities.map((amenity, index) => (
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <span className="d-flex align-items-center fs-6 flex-grow-1 me-2">
-                                    {amenity}
-                                </span>
-                                <DeleteButton onClick={() => deleteAmenity(index)} />
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <hr />
-
-                <div className="mb-3">
-                    <label htmlFor="projectSlideTitle" className="form-label fs-5">Slide Title</label>
+                    <label htmlFor="projectSlideTitle" className="form-label fs-5">Project Slide Title</label>
                     <input
                         type="text"
                         id="projectSlideTitle"
@@ -457,51 +448,108 @@ function CreateProjectContent() {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="projectSlideImg" className="form-label fs-5">Slide Images</label>
-                    <div {...getRootProps()} className="dropzone border border-secondary rounded p-3 text-center">
+                    <label htmlFor="projectSlides" className="form-label fs-5">Project Slides</label>
+                    <div {...getRootProps({ className: 'dropzone' })}>
                         <input {...getInputProps()} />
-                        <p className="mb-0">Drag & drop images here, or click to select images</p>
+                        <p>Drag & drop some images here, or click to select files</p>
+                    </div>
+                    <div className="mt-3">
+                        {newSlideImgs.map((file, index) => (
+                            <div key={index} className="mb-2">
+                                <img
+                                    src={URL.createObjectURL(file)}
+                                    alt={`Slide ${index}`}
+                                    style={{ maxWidth: '200px', marginRight: '10px' }}
+                                />
+                                <DeleteButton onClick={() => {
+                                    setNewSlideImgs(newSlideImgs.filter((_, i) => i !== index));
+                                }} />
+                            </div>
+                        ))}
+                    </div>
+                    <button type="button" className="btn btn-primary mt-3" onClick={addSlide}>Add Slide</button>
+                    <div className="mt-3">
+                        {formData.projectSlides.map((slide, index) => (
+                            <div key={index} className="mb-2">
+                                <h5>{slide.projectSlideTitle}</h5>
+                                {slide.projectImg.map((img, imgIndex) => (
+                                    <img
+                                        key={imgIndex}
+                                        src={URL.createObjectURL(img)}
+                                        alt={`Slide ${index} Img ${imgIndex}`}
+                                        style={{ maxWidth: '200px', marginRight: '10px' }}
+                                    />
+                                ))}
+                                <DeleteButton onClick={() => deleteSlide(index)} />
+                            </div>
+                        ))}
                     </div>
                 </div>
 
                 <div className="mb-3">
+                    <label htmlFor="projectPricing" className="form-label fs-5">Project Pricing</label>
+                    <input
+                        type="text"
+                        id="projectPricing"
+                        name="projectPricing"
+                        className="form-control"
+                        value={formData.projectPricing}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="projectAmenities" className="form-label fs-5">Project Amenities</label>
+                    <div className="input-group mb-3">
+                        <input
+                            type="text"
+                            id="newAmenity"
+                            name="newAmenity"
+                            className="form-control"
+                            value={newAmenity}
+                            onChange={(e) => setNewAmenity(e.target.value)}
+                        />
+
+                    </div>
+                    <button type="button" className="btn btn-primary" onClick={addAmenity}>Add</button>
                     <ul className="list-group">
-                        {newSlideImgs.map((img, index) => (
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <img src={img} alt={`Slide ${index + 1}`} className="img-thumbnail me-2" style={{ width: '25%', height: '25%' }} />
+                        {formData.projectAmenities.map((amenity, index) => (
+                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                                {amenity}
+                                <DeleteButton onClick={() => deleteAmenity(index)} />
                             </li>
                         ))}
                     </ul>
                 </div>
 
                 <div className="mb-3">
-                    <button type="button" className="btn btn-secondary" onClick={addSlide}>
-                        Add Slide
-                    </button>
-                </div>
+                    <label htmlFor="projectWhatAround" className="form-label fs-5">What's Around</label>
+                    <div className="input-group mb-3">
+                        <input
+                            type="text"
+                            id="newWhatAround"
+                            name="newWhatAround"
+                            className="form-control"
+                            value={newWhatAround}
+                            onChange={(e) => setWhatAround(e.target.value)}
+                        />
 
-                <div className="mb-3">
+                    </div>
+                    <button type="button" className="btn btn-primary" onClick={addWhatAround}>Add</button>
                     <ul className="list-group">
-                        {projectData.projectSlides.map((slide, index) => (
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <div className="flex-grow-1 me-2">
-                                    <h5 className="mb-1">{slide.projectSlideTitle}</h5>
-                                    <div className="d-flex">
-                                        {slide.projectImgs.map((img, imgIndex) => (
-                                            <img key={imgIndex} src={img} alt={`Slide ${index + 1} - Image ${imgIndex + 1}`} className="img-thumbnail me-2" style={{ width: '25%', height: '25%' }} />
-                                        ))}
-                                    </div>
-                                </div>
-                                <DeleteButton onClick={() => deleteSlide(index)} />
+                        {formData.projectWhatAround.map((whatAround, index) => (
+                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                                {whatAround}
+                                <DeleteButton onClick={() => deleteWhatAround(index)} />
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                <button type="submit" className="btn btn-success">Submit</button>
             </form>
         </div>
     );
-}
+};
 
 export default CreateProjectContent;
