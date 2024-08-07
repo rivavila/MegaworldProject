@@ -123,7 +123,7 @@ const About = () => {
           ></iframe>
         </div>
 
-        <a id="about-megaworld">
+        <a id="about-megaworld" href="#">
           <h1 className="txtTitle">About Megaworld</h1>
         </a>
         <p>

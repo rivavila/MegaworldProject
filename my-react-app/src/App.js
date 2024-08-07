@@ -8,6 +8,9 @@ import ProjectPage from './components/ProjectPage';
 import News from './components/News';
 import About from './components/About';
 import Contact from './components/Contact';
+import Townships from './components/Townhips';
+import CreateProject from './components/function/CreateProjectContent';
+import UploadImage from "./components/function/UploadImage";
 import './App.css'; // Import the CSS file
 
 function App() {
@@ -20,9 +23,13 @@ function App() {
 
         <div className="Content">
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Project />} />
             <Route path="/projects/:projectNo" element={<ProjectPage />} />
+            <Route path="/townships" element={<Townships />} />
+            <Route path="/townships/:projectNo" element={<Townships />} />
+            <Route path="/create-project" element={<CreateProject />} />
+            <Route path="/upload-img" element={<UploadImage />} />
             <Route path="/news" element={<News />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

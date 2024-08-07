@@ -9,7 +9,7 @@ function ProjectContent({ project }) {
     const sliderRefs = useRef([]);
 
     useEffect(() => {
-        if (project.projectData.projectSlides.length > 0) {
+        if (project.projectData.projectSlides?.length > 0) {
             const initialImages = project.projectData.projectSlides.map(slide => slide.projectImg[0]);
             setMainImages(initialImages);
         }
@@ -68,7 +68,6 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-
             {project.projectStructure.includes('projectFeature') && (
                 <div className='my-5'>
                     <h4>Feature</h4>
@@ -80,21 +79,21 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {project.projectStructure.includes('projectEstablisment') && (
+            {project.projectStructure.includes('projectEstablishment') && (
                 <div className='my-5'>
                     <h4>Establishment</h4>
                     <ul className='mt-3'>
-                        {project.projectData.projectEstablisment.map((est, index) => (
+                        {project.projectData.projectEstablishment.map((est, index) => (
                             <li key={index}>{est}</li>
                         ))}
                     </ul>
                 </div>
             )}
 
-            {project.projectStructure.includes('projectUniqueFeatured') && (
+            {project.projectStructure.includes('projectUniqueFeature') && (
                 <div className='my-5'>
                     <h4>Unique Features</h4>
-                    {project.projectData.projectUniqueFeatured.map((unique, index) => (
+                    {project.projectData.projectUniqueFeature.map((unique, index) => (
                         <p key={index}>{unique}</p>
                     ))}
                 </div>
@@ -125,7 +124,7 @@ function ProjectContent({ project }) {
                 </div>
             )}
 
-            {project.projectStructure.includes('projectSlides') && project.projectData.projectSlides.map((slide, slideIndex) => (
+            {project.projectStructure.includes('projectSlides') && project.projectData.projectSlides?.map((slide, slideIndex) => (
                 <div key={slideIndex} className='my-5'>
                     <h4>{slide.projectSlideTitle}</h4>
                     {mainImages[slideIndex] && (
