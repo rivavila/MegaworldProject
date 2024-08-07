@@ -12,14 +12,15 @@ const port = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Path to the JSON file
-const projectsFilePath = path.join(__dirname, 'projects.json');
-
-// Dynamically resolve the image folder path relative to the project root
+// Dynamically resolve the paths relative to the project root
 const imgFolderPath = path.resolve(__dirname, '../src/components/assets/img');
+const projectsFilePath = path.resolve(__dirname, '../src/components/assets/projects.json');
 
 // Ensure the upload directory exists
 fs.mkdirSync(imgFolderPath, { recursive: true });
+
+// Ensure the directory for the projects.json file exists
+fs.mkdirSync(path.dirname(projectsFilePath), { recursive: true });
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
